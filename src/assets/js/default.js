@@ -455,6 +455,8 @@ stories.forEach((storie) => {
       if (currentSlide < dots.length) {
 
         if (isPause == false) {
+          let lastSlide = currentSlide - 1;
+          imagesStorieCarousel[lastSlide].classList.remove("active");
 
           timeToProgressStories();
         } else {
@@ -478,6 +480,8 @@ stories.forEach((storie) => {
       if (currentText < dots.length) {
 
         if (isPause == false) {
+          let lastText = currentText - 1;
+          textStorieCarousel[lastText].classList.remove("active");
 
           timeToProgressTexts();
         } else {
