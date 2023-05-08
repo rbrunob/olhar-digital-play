@@ -371,9 +371,15 @@ stories.forEach((storie) => {
         </div>
         <div class="storie_open_row">
           <div class="progress_bar">
-            <div class="dot_progress time" data-index="0"></div>
-            <div class="dot_progress time" data-index="1"></div>
-            <div class="dot_progress time" data-index="2"></div>
+            <div class="dot_progress" data-index="0">
+              <div class="progress_active"></div>
+            </div>
+            <div class="dot_progress" data-index="1">
+              <div class="progress_active"></div>
+            </div>
+            <div class="dot_progress" data-index="2">
+              <div class="progress_active"></div>
+            </div>
           </div>
           <div class="storie_open_functions">
             <div class="play_pause">
@@ -396,17 +402,18 @@ stories.forEach((storie) => {
     // ANIMAÇÃO DOS DOTS
 
     //consts
-    const dotsStories = document.querySelectorAll(".dot_progress");
+    const dotsStories = document.querySelectorAll(".dot_progress"); //progressBarElements
     const imagesStorieCarousel = document.querySelectorAll(".images_carousel .image");
     const textStorieCarousel = document.querySelectorAll(".stories_texts p");
     const pauseStorie = document.querySelector(".play_pause");
     const closeButton = document.querySelector(".close");
 
     // default variables
-    let currentDot = 0;
+    let currentProgressIndex = 0;
+    let currentProgress = 0;
     let currentSlide = 0;
     let currentText = 0;
-    let timeAnimation = 5000;
+    let timeAnimation = 5000; //storyDuration
     let timeToNext = 10;
     let isPause = false;
 
@@ -415,27 +422,28 @@ stories.forEach((storie) => {
     const timeToProgressStories = () => setTimeout(storiesAnimations, timeAnimation);
     const startTextsAnimations = () => setTimeout(textsAnimations, timeToNext);
     const timeToProgressTexts = () => setTimeout(textsAnimations, timeAnimation);
-    const startDotsAnimation = () => setTimeout(dotsAnimations, timeToNext);
-    const timeToProgressDots = () => setTimeout(dotsAnimations, timeAnimation);
 
-    // animation dots
-    const dotsAnimations = () => {
-      if (isPause == false) {
-        dotsStories[currentDot].classList.add("active");
-        if (isPause == true) {
-          dotsStories[currentDot].classList.remove("active");
+    function animateProgressBar() {
+      const interval = 10;
+      const increment = interval / timeAnimation * 100;
+      const intervalId = setInterval(() => {
+        if (currentProgress >= 100) {
+          clearInterval(intervalId);
+          currentProgressIndex++;
+          if (currentProgressIndex >= dotsStories.length) {
+            return;
+          }
+          currentProgress = 0;
+          animateProgressBar();
+          return;
         }
-        currentDot++;
-      }
+        currentProgress += increment;
+        dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
+      }, interval);
+    }
+    animateProgressBar();
 
-      if (currentDot < dotsStories.length) {
-        if (isPause == false) {
-          timeToProgressDots();
-        } else {
-          clearTimeout(timeToProgressDots);
-        }
-      }
-    };
+
 
     // animation stories
     const storiesAnimations = () => {
@@ -483,7 +491,6 @@ stories.forEach((storie) => {
     };
 
     // timeout start
-    startDotsAnimation();
     startStoriesAnimations();
     startTextsAnimations();
 
@@ -501,7 +508,6 @@ stories.forEach((storie) => {
         let lastText = currentText - 1;
         textStorieCarousel[lastText].classList.remove("active");
 
-        startDotsAnimation();
         startStoriesAnimations();
         startTextsAnimations();
       }

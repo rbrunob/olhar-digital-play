@@ -22,6 +22,7 @@
     --duration-025: .25s;
     --duration-05: .5s;
     --duration-1: 1s;
+    --transition-after: 5s;
 
     /* margin width */
     --mw-100: 100%;
