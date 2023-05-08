@@ -420,18 +420,12 @@ stories.forEach((storie) => {
 
     // animation dots
     const dotsAnimations = () => {
-      console.log(isPause)
       if (isPause == false) {
         dots[currentDot].classList.add("active");
-      }
-
-      if (isPause == false) {
-        console.log(currentDot + ' - if')
         currentDot++;
       }
 
       if (currentDot < dots.length) {
-
         if (isPause == false) {
           timeToProgressDots();
         } else {
@@ -442,22 +436,17 @@ stories.forEach((storie) => {
 
     // animation stories
     const storiesAnimations = () => {
-      console.log(isPause)
       if (isPause == false) {
         imagesStorieCarousel[currentSlide].classList.add("active");
-      }
-
-      if (isPause == false) {
-        console.log(currentSlide + ' - if')
         currentSlide++;
       }
 
       if (currentSlide < dots.length) {
-
         if (isPause == false) {
-          let lastSlide = currentSlide - 1;
-          imagesStorieCarousel[lastSlide].classList.remove("active");
-
+          setTimeout(function () {
+            let lastSlide = currentSlide - 1;
+            imagesStorieCarousel[lastSlide].classList.remove("active");
+          }, 5000);
           timeToProgressStories();
         } else {
           clearTimeout(timeToProgressStories);
@@ -467,22 +456,17 @@ stories.forEach((storie) => {
 
     // animation stories
     const textsAnimations = () => {
-      console.log(isPause)
       if (isPause == false) {
         textStorieCarousel[currentText].classList.add("active");
-      }
-
-      if (isPause == false) {
-        console.log(currentText + ' - if')
         currentText++;
       }
 
       if (currentText < dots.length) {
-
         if (isPause == false) {
-          let lastText = currentText - 1;
-          textStorieCarousel[lastText].classList.remove("active");
-
+          setTimeout(function () {
+            let lastText = currentText - 1;
+            textStorieCarousel[lastText].classList.remove("active");
+          }, 5000);
           timeToProgressTexts();
         } else {
           clearTimeout(timeToProgressTexts);
