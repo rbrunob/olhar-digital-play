@@ -446,7 +446,7 @@ stories.forEach((storie) => {
           setTimeout(function () {
             let lastSlide = currentSlide - 1;
             imagesStorieCarousel[lastSlide].classList.remove("active");
-          }, 5000);
+          }, timeAnimation);
           timeToProgressStories();
         } else {
           clearTimeout(timeToProgressStories);
@@ -466,7 +466,7 @@ stories.forEach((storie) => {
           setTimeout(function () {
             let lastText = currentText - 1;
             textStorieCarousel[lastText].classList.remove("active");
-          }, 5000);
+          }, timeAnimation);
           timeToProgressTexts();
         } else {
           clearTimeout(timeToProgressTexts);
