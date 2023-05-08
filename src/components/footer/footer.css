@@ -1,0 +1,133 @@
+footer {
+    position: relative;
+    top: 60px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--bg-gray-700);
+}
+
+
+footer .footer_row {
+    width: var(--mw-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 30px 0;
+    gap: 30px;
+}
+
+footer .copyright {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    background: var(--bg-black);
+    justify-content: center;
+    padding: 10px 0;
+}
+
+footer .copyright p {
+    color: var(--text-white);
+    font-size: var(--text-xxs);
+    font-weight: var(--font-light);
+}
+
+footer .footer_row .container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    justify-content: center;
+    width: 100%;
+}
+
+footer .footer_row .nav_footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .footer_row .nav_footer .container_nav_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.container_nav_footer .nav_item {
+    padding: 5px;
+    width: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_nav_footer .nav_item a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-normal);
+    transition: .15s;
+}
+
+.container_nav_footer .nav_item::after {
+    content: '';
+    right: -8px;
+    width: 1px;
+    height: 60%;
+    background: var(--bg-white);
+    position: absolute;
+}
+
+.container_nav_footer .nav_item:last-child::after {
+    display: none;
+}
+
+footer .footer_row .container .logo_footer {
+    max-width: 262px;
+    max-height: 48px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .footer_row .container .logo_footer img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+footer .footer_row .container .social_media_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    gap: 10px;
+}
+
+.social_media_footer a {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social_media_footer a img {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+}
+
+.container_nav_footer .nav_item a:hover {
+    color: var(--text-green-400);
+}

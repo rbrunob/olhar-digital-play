@@ -1,0 +1,180 @@
+#catalog .container_carousel_posters .carousel_prev {
+    position: absolute;
+    left: -50px;
+    cursor: pointer;
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    justify-content: center;
+    opacity: 0;
+    transition: all .3s;
+}
+
+#catalog .container_carousel_posters .carousel_next {
+    position: absolute;
+    right: -50px;
+    cursor: pointer;
+    width: 50px;
+    opacity: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: all .3s;
+}
+
+#catalog .container_carousel_posters:hover .carousel_prev {
+    background: #0000000a;
+    opacity: 1;
+}
+
+#catalog .container_carousel_posters:hover .carousel_next {
+    background: #0000000a;
+    opacity: 1;
+}
+
+
+#catalog .container_carousel_posters .carousel_prev img {
+    width: 20px;
+}
+
+#catalog .container_carousel_posters .carousel_next img {
+    width: 20px;
+}
+
+#catalog {
+    width: var(--mw-100);
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    background: var(--bg-gray-100);
+}
+
+#catalog .catalog_row {
+    width: var(--mw-60);
+    margin: 0 auto;
+    padding: 3% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+}
+
+.catalog_row .catalog_title {
+    width: 100%;
+    text-align: center;
+    font-size: var(--text-3xl);
+    font-style: italic;
+    font-weight: var(--font-light);
+    text-transform: uppercase;
+    color: var(--text-gray-500);
+}
+
+.catalog_row .catalog_title span {
+    color: var(--text-green-400);
+    font-weight: var(--font-semibold);
+}
+
+.container_carousel_posters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+.container_carousel_posters .container_posters {
+    width: 100%;
+    display: flex;
+    height: auto;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    flex: 1 0 auto;
+}
+
+.container_carousel_posters .container_posters .poster {
+    flex-shrink: 0;
+    margin: 0 10px 0;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    width: calc(100% / 6 - 10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.container_carousel_posters .container_posters .poster img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.call_to_action {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.call_to_action a {
+    width: auto;
+    height: auto;
+    padding: 8px 15px;
+    background: var(--bg-green-400);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-white);
+    font-size: var(--text-sm);
+    font-weight: var(--font-normal);
+    transition: var(--duration-025);
+}
+
+.call_to_action a:hover {
+    background: var(--bg-green-900);
+}
+
+.call_to_action p {
+    font-size: var(--text-sm);
+    font-weight: var(--font-normal);
+    color: var(--text-gray-400);
+}
+
+#catalog .container_carousel_posters::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(270deg, #e2e2e2 2%, transparent 20%);
+    display: block;
+    right: 0;
+    transition: all .3s;
+}
+
+#catalog .container_carousel_posters.active::after {
+    width: 0%;
+}
+
+#catalog .container_carousel_posters::before {
+    position: absolute;
+    content: '';
+    width: 0%;
+    height: 100%;
+    background-image: linear-gradient(90deg, #e2e2e2 2%, transparent 20%);
+    display: block;
+    z-index: 1;
+    left: 0;
+    transition: all .3s;
+}
+
+#catalog .container_carousel_posters.active::before {
+    width: 100%;
+}

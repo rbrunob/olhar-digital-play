@@ -1,0 +1,7 @@
+#highlightsTwo {
+    width: var(--mw-100);
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    max-width: 1920px;
+}

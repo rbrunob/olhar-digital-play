@@ -1,0 +1,29 @@
+#bannerAds {
+    width: var(--mw-100);
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1920px;
+}
+
+.bannerads_row {
+    width: var(--mw-60);
+    margin: 0 auto;
+    height: auto;
+    padding: 2% 0;
+}
+
+.bannerads_image {
+    width: 95%;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.bannerads_image img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}

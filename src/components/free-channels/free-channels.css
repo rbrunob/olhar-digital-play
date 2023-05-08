@@ -1,0 +1,50 @@
+#freeChannel .carousel_container .carousel_prev {
+    position: absolute;
+    left: -100px;
+    cursor: pointer;
+    width: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#freeChannel .carousel_container .carousel_next {
+    position: absolute;
+    right: -100px;
+    cursor: pointer;
+    width: 50px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#freeChannel {
+    width: var(--mw-100);
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    background: var(--bg-gray-100);
+}
+
+#freeChannel .carousel_title .title {
+    background: var(--bg-gray-100);
+}
+
+#freeChannel .item_texts .texts_title {
+    color: var(--text-green-400);
+    font-size: var(--text-xl);
+    font-weight: var(--font-light);
+}
+
+#freeChannel .carousel_item .item_image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, var(--bg-white) 1%, transparent 25%);
+    z-index: 1;
+    left: 0;
+}

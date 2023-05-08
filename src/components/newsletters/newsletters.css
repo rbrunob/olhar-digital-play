@@ -1,0 +1,92 @@
+#newslatters {
+    width: var(--mw-100);
+    margin: 0 auto;
+    padding: 5% 0;
+    position: relative;
+    background: var(--bg-gray-600);
+    top: 60px;
+}
+
+#newslatters .newslatters_row {
+    margin: 0 auto;
+    width: var(--mw-50);
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newslatters_row .newsletters_title {
+    font-size: var(--text-4xl);
+    color: var(--text-white);
+    font-weight: var(--font-medium);
+    text-align: center;
+}
+
+.newslatters_row .newsletters_subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-white);
+    font-weight: var(--font-light);
+    text-align: center;
+}
+
+.newsletters_form {
+    width: var(--mw-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.newsletters_input {
+    width: var(--mw-90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.newsletters_input input[type="email"] {
+    width: var(--mw-70);
+    height: auto;
+    background: var(--bg-white);
+    border: none;
+    border-radius: 15px 0 0 15px;
+    padding: 8px 20px;
+    font-size: var(--text-lg);
+    font-weight: var(--font-light);
+}
+
+.newsletters_input input[type="email"]::-webkit-input-placeholder {
+    color: var(--text-gray-300);
+}
+
+.newsletters_input input[type="email"]:focus {
+    outline: none;
+    border: none;
+}
+
+.newsletters_input button {
+    width: auto;
+    height: auto;
+    padding: 8px 20px;
+    border-radius: 0 15px 15px 0;
+    border: none;
+    font-size: var(--text-lg);
+    font-weight: var(--font-light);
+    color: var(--text-white);
+    transition: var(--duration-025);
+    outline: none;
+    background: var(--bg-green-400);
+    cursor: pointer;
+}
+
+.newsletters_input button:hover {
+    background: var(--bg-green-300);
+}
+
+.newsletters_input button:focus {
+    outline: none;
+    border: none;
+}
