@@ -411,17 +411,8 @@ stories.forEach((storie) => {
     // default variables
     let currentProgressIndex = 0;
     let currentProgress = 0;
-    let currentSlide = 0;
-    let currentText = 0;
     let timeAnimation = 5000; //storyDuration
-    let timeToNext = 10;
     let isPause = false;
-
-    // timeouts
-    const startStoriesAnimations = () => setTimeout(storiesAnimations, timeToNext);
-    const timeToProgressStories = () => setTimeout(storiesAnimations, timeAnimation);
-    const startTextsAnimations = () => setTimeout(textsAnimations, timeToNext);
-    const timeToProgressTexts = () => setTimeout(textsAnimations, timeAnimation);
 
     function animateProgressBar() {
       const interval = 10;
@@ -440,79 +431,22 @@ stories.forEach((storie) => {
         currentProgress += increment;
         dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
       }, interval);
+
+      pauseStorie.addEventListener('click', () => {
+        if (isPause == false) {
+          isPause = true;
+          clearInterval(intervalId)
+        } else {
+          animateProgressBar();
+        }
+      })
     }
     animateProgressBar();
 
-
-
-    // animation stories
-    const storiesAnimations = () => {
-      if (isPause == false) {
-        imagesStorieCarousel[currentSlide].classList.add("active");
-        currentSlide++;
-      }
-
-      if (currentSlide < dotsStories.length) {
-        if (isPause == false) {
-          setTimeout(function () {
-            let lastSlide = currentSlide - 1;
-            if (!isPause) {
-              imagesStorieCarousel[lastSlide].classList.remove("active");
-            }
-          }, timeAnimation);
-          timeToProgressStories();
-        } else {
-          clearTimeout(timeToProgressStories);
-        }
-      }
-    };
-
-    // animation stories
-    const textsAnimations = () => {
-      if (isPause == false) {
-        textStorieCarousel[currentText].classList.add("active");
-        currentText++;
-      }
-
-      if (currentText < dotsStories.length) {
-        if (isPause == false) {
-          const remove = () => setTimeout(function () {
-            let lastText = currentText - 1;
-            if (!isPause) {
-              textStorieCarousel[lastText].classList.remove("active");
-            }
-          }, timeAnimation);
-          remove();
-          timeToProgressTexts();
-        } else {
-          clearTimeout(timeToProgressTexts);
-        }
-      }
-    };
-
-    // timeout start
-    startStoriesAnimations();
-    startTextsAnimations();
-
     // pause and play stories
-    const pause = () => {
-      pauseStorie.classList.toggle("active");
-      if (isPause == false) {
-        isPause = true;
-      } else if (isPause == true && currentSlide < dotsStories.length) {
-        isPause = false;
-
-        let lastSlide = currentSlide - 1;
-        imagesStorieCarousel[lastSlide].classList.remove("active");
-
-        let lastText = currentText - 1;
-        textStorieCarousel[lastText].classList.remove("active");
-
-        startStoriesAnimations();
-        startTextsAnimations();
-      }
-    };
-    pauseStorie.addEventListener("click", pause);
+    pauseStorie.addEventListener("click", () => {
+      console.log(currentProgressIndex, currentProgress)
+    })
 
     // close stories
     const closeSlides = () => {
@@ -522,17 +456,5 @@ stories.forEach((storie) => {
       }, 200);
     }
     closeButton.addEventListener("click", closeSlides);
-
-    // //BOTÃO NEXT
-    // const nextStorie = document.querySelector(".storie_open_next");
-    // nextStorie.addEventListener("click", () => {
-    //   console.log("próximo");
-    // });
-
-    // //BOTÃO ANTERIOR
-    // const prevStorie = document.querySelector(".storie_open_prev");
-    // prevStorie.addEventListener("click", () => {
-    //   console.log("anterior");
-    // });
   });
 });
