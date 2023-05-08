@@ -310,11 +310,14 @@
     width: 0%;
     height: 100%;
     background: white;
-    transition: all 5s linear;
 }
 
 .progress_bar .dot_progress.active::after {
     width: 100%;
+}
+
+.progress_bar .dot_progress.time::after {
+    transition: all 5s linear;
 }
 
 .storie_open_functions {

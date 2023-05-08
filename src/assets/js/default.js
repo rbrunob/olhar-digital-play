@@ -371,9 +371,9 @@ stories.forEach((storie) => {
         </div>
         <div class="storie_open_row">
           <div class="progress_bar">
-            <div class="dot_progress" data-index="0"></div>
-            <div class="dot_progress" data-index="1"></div>
-            <div class="dot_progress" data-index="2"></div>
+            <div class="dot_progress time" data-index="0"></div>
+            <div class="dot_progress time" data-index="1"></div>
+            <div class="dot_progress time" data-index="2"></div>
           </div>
           <div class="storie_open_functions">
             <div class="play_pause">
@@ -396,7 +396,7 @@ stories.forEach((storie) => {
     // ANIMAÇÃO DOS DOTS
 
     //consts
-    const dots = document.querySelectorAll(".dot_progress");
+    const dotsStories = document.querySelectorAll(".dot_progress");
     const imagesStorieCarousel = document.querySelectorAll(".images_carousel .image");
     const textStorieCarousel = document.querySelectorAll(".stories_texts p");
     const pauseStorie = document.querySelector(".play_pause");
@@ -421,11 +421,14 @@ stories.forEach((storie) => {
     // animation dots
     const dotsAnimations = () => {
       if (isPause == false) {
-        dots[currentDot].classList.add("active");
+        dotsStories[currentDot].classList.add("active");
+        if (isPause == true) {
+          dotsStories[currentDot].classList.remove("active");
+        }
         currentDot++;
       }
 
-      if (currentDot < dots.length) {
+      if (currentDot < dotsStories.length) {
         if (isPause == false) {
           timeToProgressDots();
         } else {
@@ -441,11 +444,13 @@ stories.forEach((storie) => {
         currentSlide++;
       }
 
-      if (currentSlide < dots.length) {
+      if (currentSlide < dotsStories.length) {
         if (isPause == false) {
           setTimeout(function () {
             let lastSlide = currentSlide - 1;
-            imagesStorieCarousel[lastSlide].classList.remove("active");
+            if (!isPause) {
+              imagesStorieCarousel[lastSlide].classList.remove("active");
+            }
           }, timeAnimation);
           timeToProgressStories();
         } else {
@@ -461,12 +466,15 @@ stories.forEach((storie) => {
         currentText++;
       }
 
-      if (currentText < dots.length) {
+      if (currentText < dotsStories.length) {
         if (isPause == false) {
-          setTimeout(function () {
+          const remove = () => setTimeout(function () {
             let lastText = currentText - 1;
-            textStorieCarousel[lastText].classList.remove("active");
+            if (!isPause) {
+              textStorieCarousel[lastText].classList.remove("active");
+            }
           }, timeAnimation);
+          remove();
           timeToProgressTexts();
         } else {
           clearTimeout(timeToProgressTexts);
@@ -484,7 +492,7 @@ stories.forEach((storie) => {
       pauseStorie.classList.toggle("active");
       if (isPause == false) {
         isPause = true;
-      } else if (isPause == true && currentSlide < dots.length) {
+      } else if (isPause == true && currentSlide < dotsStories.length) {
         isPause = false;
 
         let lastSlide = currentSlide - 1;
