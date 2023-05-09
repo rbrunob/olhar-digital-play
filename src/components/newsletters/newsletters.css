@@ -90,3 +90,23 @@
     outline: none;
     border: none;
 }
+
+@media screen and (max-width: 540px) {
+    #newslatters .newslatters_row {
+        width: var(--mw-90);
+        padding: 10% 0;
+        gap: 30px;
+    }
+
+    .newsletters_input {
+        width: var(--mw-100);
+    }
+
+    .newsletters_input input[type="email"] {
+        width: 60%;
+    }
+
+    .newsletters_input button {
+        width: 45%;
+    }
+}

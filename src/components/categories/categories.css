@@ -84,3 +84,25 @@
 .categories_items .categories_item a:hover {
     background: var(--bg-green-900);
 }
+
+@media screen and (max-width: 540px) {
+    .moviesplaying_title {
+        text-align: center;
+    }
+
+    .moviesplaying_items {
+        flex-direction: column;
+    }
+
+    #moviesPlaying .moviesplaying_row {
+        padding: 15% 0;
+    }
+
+    #categories .categories_row {
+        padding: 15% 0;
+    }
+
+    .categories_items {
+        flex-direction: column;
+    }
+}
