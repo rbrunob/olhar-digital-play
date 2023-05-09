@@ -131,3 +131,44 @@ footer .footer_row .container .social_media_footer {
 .container_nav_footer .nav_item a:hover {
     color: var(--text-green-400);
 }
+
+footer .footer_row .container h4 {
+    display: none;
+}
+
+@media screen and (max-width: 540px) {
+    footer .footer_row {
+        width: var(--mw-90);
+    }
+
+    footer .footer_row .nav_footer {
+        display: none;
+    }
+
+    footer .footer_row .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    footer .footer_row .container .logo_footer {
+        display: none;
+    }
+
+    .social_media_footer a img {
+        width: 45px;
+        height: 35px;
+    }
+
+    .social_media_footer a {
+        width: 45px;
+        height: 45px;
+    }
+
+    footer .footer_row .container h4 {
+        font-size: var(--text-xl);
+        font-weight: var(--font-normal);
+        color: var(--text-white);
+        text-align: center;
+        display: block;
+    }
+}

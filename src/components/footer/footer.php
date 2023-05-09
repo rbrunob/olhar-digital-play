@@ -4,6 +4,7 @@
             <div class="logo_footer">
                 <img src="./src/assets/images/logo_olhar_digital_news.svg" alt="Logo Olhar Digital News" />
             </div>
+            <h4>Siga Nossas Redes!</h4>
             <div class="social_media_footer">
                 <a href="linkedin">
                     <img src="./src/assets/images/icon_linkedin.svg" alt="LinkeIn" />
