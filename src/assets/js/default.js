@@ -369,8 +369,7 @@ stories.forEach((storie) => {
             <path d="M33.8002 8.99998L12.8002 30L33.8002 51L29.6002 59.4L0.200195 30L29.6002 0.599976L33.8002 8.99998Z" fill="white" fill-opacity="0.5"/>
           </svg>
         </div>
-        <div class="storie_open_row">
-          <div class="progress_bar">
+        <div class="progress_bar">
             <div class="dot_progress" data-index="0">
               <div class="progress_active"></div>
             </div>
@@ -381,10 +380,11 @@ stories.forEach((storie) => {
               <div class="progress_active"></div>
             </div>
           </div>
-          <div class="storie_open_functions">
+        <div class="storie_open_functions">
             <div class="play_pause">
             </div>
           </div>
+        <div class="storie_open_row">
           <div class="stories_texts">
             <p data-index="0">${storiesContent.title}</p>
             <p data-index="1">texto 2</p>
@@ -396,6 +396,7 @@ stories.forEach((storie) => {
           <path d="M0.199807 51L21.1998 30L0.199811 9.00002L4.39981 0.600026L33.7998 30L4.39981 59.4L0.199807 51Z" fill="white" fill-opacity="0.5"/>
         </svg>
         </div>
+        <div class="reset"></div>
       </div>
     `;
 
@@ -403,58 +404,199 @@ stories.forEach((storie) => {
 
     //consts
     const dotsStories = document.querySelectorAll(".dot_progress"); //progressBarElements
-    const imagesStorieCarousel = document.querySelectorAll(".images_carousel .image");
-    const textStorieCarousel = document.querySelectorAll(".stories_texts p");
     const pauseStorie = document.querySelector(".play_pause");
     const closeButton = document.querySelector(".close");
+    const imageStories = document.querySelectorAll(".image");
+    const textStories = document.querySelectorAll(".stories_texts p");
+    const containerStories = document.querySelector(".storie_open_row");
+    const resetArea = document.querySelector(".reset");
 
     // default variables
     let currentProgressIndex = 0;
     let currentProgress = 0;
+    let currentImage = 0;
+    let currentText = 0;
     let timeAnimation = 5000; //storyDuration
     let isPause = false;
 
-    function animateProgressBar() {
-      const interval = 10;
-      const increment = interval / timeAnimation * 100;
-      const intervalId = setInterval(() => {
-        if (currentProgress >= 100) {
+    const interval = 10;
+    const increment = interval / timeAnimation * 100;
+
+    const intervalId = () => setInterval(() => {
+      if (currentProgressIndex < dotsStories.length) {
+        if (currentProgress >= 100 && isPause == false) {
           clearInterval(intervalId);
           currentProgressIndex++;
+
           if (currentProgressIndex >= dotsStories.length) {
-            return;
+            clearInterval(intervalId);
+            resetArea.classList.add("hidden");
+
+            setTimeout(() => {
+              resetArea.classList.add("active");
+              pauseStorie.classList.add("active");
+            }, 200);
+
+            resetArea.innerHTML = `
+              <div class="reset_container">
+                <div class="reset_button">
+                  <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.66742 9.90071C5.75182 6.30331 9.07255 3.58601 13.0113 2.25478C16.9501 0.923544 21.2384 1.0691 25.0778 2.66435C28.9173 4.2596 32.0461 7.19582 33.8818 10.9263C35.7174 14.6567 36.1348 18.9272 35.0562 22.9425C33.9776 26.9578 31.4765 30.4443 28.0186 32.7527C24.5607 35.0612 20.3817 36.0343 16.2597 35.4909C12.1377 34.9475 8.35372 32.9246 5.61222 29.7989C2.87072 26.6732 1.3586 22.6576 1.35742 18.5" stroke="white" stroke-width="2.14286" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.0714 9.92858H3.5V1.35715" stroke="white" stroke-width="2.14286" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                <div>
+              </div>
+            `;
+
+            const resetButton = document.querySelector(".reset_button");
+            resetButton.addEventListener("click", () => {
+              pauseStorie.classList.remove("active");
+
+              currentImage = 0;
+              currentText = 0;
+              currentProgressIndex = 0;
+              currentProgress = 0;
+
+              dotsStories.forEach(dot => {
+                dot.querySelector('.progress_active').style.width = `${currentProgress}%`;
+              })
+
+              imageStories.forEach(image => {
+                image.classList.remove("active")
+              })
+
+              textStories.forEach(text => {
+                text.classList.remove("active")
+              })
+
+              resetArea.classList.remove("active");
+              setTimeout(() => {
+                resetArea.classList.remove("hidden");
+              }, 200);
+
+              clearInterval(intervalId)
+            })
           }
           currentProgress = 0;
-          animateProgressBar();
           return;
-        }
-        currentProgress += increment;
-        dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
-      }, interval);
-
-      pauseStorie.addEventListener('click', () => {
-        if (isPause == false) {
-          isPause = true;
+        } else if (isPause == false) {
+          currentProgress += increment;
+        } else if (isPause == true) {
           clearInterval(intervalId)
-        } else {
-          animateProgressBar();
         }
-      })
-    }
-    animateProgressBar();
+        dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
+      }
+    }, interval);
+
+    intervalId()
+
+    const updateImage = () => setInterval(() => {
+      if (currentProgressIndex < dotsStories.length) {
+        imageStories[currentImage].classList.add("active");
+        if (currentProgress >= 100) {
+          currentImage++;
+          if (currentImage < dotsStories.length) {
+            let lastImage = currentImage - 1;
+            imageStories[lastImage].classList.remove("active");
+          }
+        }
+      }
+    }, interval)
+
+    updateImage();
+
+    const updateText = () => setInterval(() => {
+      if (currentProgressIndex < dotsStories.length) {
+        textStories[currentText].classList.add("active");
+        if (currentProgress >= 100) {
+          currentText++;
+          if (currentText < dotsStories.length) {
+            let lastText = currentText - 1;
+            textStories[lastText].classList.remove("active");
+          }
+        }
+      }
+    }, interval)
+
+    updateText();
 
     // pause and play stories
     pauseStorie.addEventListener("click", () => {
-      console.log(currentProgressIndex, currentProgress)
+      if (isPause == false) {
+        isPause = true
+        pauseStorie.classList.add("active");
+      } else {
+        isPause = false
+        pauseStorie.classList.remove("active");
+      }
     })
+
+    containerStories.addEventListener("mousedown", () => {
+      isPause = true;
+      pauseStorie.classList.add("active");
+    })
+
+    containerStories.addEventListener("mouseup", () => {
+      isPause = false;
+      pauseStorie.classList.remove("active");
+    })
+
 
     // close stories
     const closeSlides = () => {
       containerStorie.classList.remove("active");
       setTimeout(() => {
         containerStorie.classList.remove("hidden");
+        isPause == true
       }, 200);
     }
     closeButton.addEventListener("click", closeSlides);
+
+    // BOTÃO NEXT
+    const nextStorie = document.querySelector(".storie_open_next");
+    nextStorie.addEventListener("click", () => {
+      if (currentProgressIndex < dotsStories.length) {
+        currentProgress = 100;
+        dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
+        currentImage++
+        currentText++
+        if (currentImage < dotsStories.length) {
+          if (currentProgressIndex >= dotsStories.length - 1) {
+            currentProgressIndex--
+          }
+          let lastText = currentText - 1;
+          let lastImage = currentImage - 1;
+          textStories[lastText].classList.remove("active");
+          imageStories[lastImage].classList.remove("active");
+        }
+      }
+    });
+
+    // BOTÃO ANTERIOR
+    const prevStorie = document.querySelector(".storie_open_prev");
+    prevStorie.addEventListener("click", () => {
+      if (0 < currentProgressIndex < dotsStories.length) {
+        currentProgress = 0;
+        if (currentProgressIndex >= dotsStories.length) {
+          dotsStories[currentProgressIndex - 1].querySelector('.progress_active').style.width = `${currentProgress}%`;
+        } else {
+          dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
+        }
+
+        if (currentProgressIndex > 0) {
+          dotsStories[currentProgressIndex - 1].querySelector('.progress_active').style.width = `${currentProgress}%`;
+          currentProgressIndex--
+          currentImage--
+          currentText--
+
+          let nextImage = currentImage + 1;
+          let nextText = currentText + 1;
+          if (currentProgressIndex < dotsStories.length - 1) {
+            imageStories[nextImage].classList.remove("active");
+            textStories[nextText].classList.remove("active");
+          }
+        }
+      }
+    });
   });
 });
