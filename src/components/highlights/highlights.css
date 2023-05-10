@@ -146,3 +146,30 @@
 .highlights_item_contents .highlights_contents_button a:hover {
     color: var(--text-gray-500);
 }
+
+@media screen and (max-width: 540px) {
+    .highlights_row {
+        width: var(--mw-90);
+        padding: 10% 0;
+    }
+
+    .highlights_row .container_title {
+        justify-content: center;
+    }
+
+    .highlights_row .container_title .title {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .highlights_items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .highlights_item_contents .highlights_contents_button {
+        display: none;
+    }
+}

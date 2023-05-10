@@ -27,3 +27,10 @@
     height: auto;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 540px) {
+    .bannerads_row {
+        width: var(--mw-100);
+        padding: 10% 0 0;
+    }
+}
