@@ -131,4 +131,17 @@ section#videosNews {
     #videosNews .carousel_container .carousel_prev {
         display: none;
     }
+
+    #videosNews .carousel_container::after {
+        display: none;
+    }
+
+    #videosNews .carousel_container::before {
+        display: none;
+    }
+
+    #videosNews .carousel_item .item_image {
+        width: 100%;
+        height: auto;
+    }
 }

@@ -188,4 +188,13 @@
     .catalog_row .catalog_title {
         font-size: var(--text-2xl);
     }
+
+    #catalog .container_carousel_posters::after {
+        display: none;
+    }
+
+    #catalog .container_carousel_posters::before {
+        display: none;
+    }
+
 }

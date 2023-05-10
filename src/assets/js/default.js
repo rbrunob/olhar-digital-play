@@ -23,7 +23,7 @@ const slides = document.querySelectorAll("#carouselMain .carousel_item");
 
 const prevButton = document.querySelector("#carouselMain .carousel_prev");
 const nextButton = document.querySelector("#carouselMain .carousel_next");
-
+const carouselSlides = document.querySelector("#carouselMain  .carousel_slides");
 const dots = document.querySelectorAll("#carouselMain .dot");
 
 const updateActiveDot = () => {
@@ -106,6 +106,50 @@ prevButton.addEventListener("click", () => {
   updateActiveDot();
 });
 
+let initialX = null;
+let initialY = null;
+
+carouselSlides.addEventListener("touchstart", handleTouchStartSlide, false);
+carouselSlides.addEventListener("touchmove", handleTouchMoveSlide, false);
+
+function handleTouchStartSlide(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveSlide(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      const nextIndex = slideIndex >= dots.length - 1 ? 0 : slideIndex + 1;
+
+      slideIndex = nextIndex;
+
+      updateActiveSlide();
+      updateActiveDot();
+    } else {
+      const prevIndex = slideIndex <= 0 ? dots.length - 1 : slideIndex - 1;
+
+      slideIndex = prevIndex;
+
+      updateActiveSlide();
+      updateActiveDot();
+    }
+  }
+
+  initialX = null;
+  initialY = null;
+}
+
 // TODAY'S NEWS
 const containerCarousel = document.querySelector(
   "#carouselArrows .carousel_content"
@@ -118,9 +162,6 @@ const nextArrow = document.querySelector("#carouselArrows .carousel_next");
 
 containerCarousel.addEventListener("touchstart", handleTouchStart, false)
 containerCarousel.addEventListener("touchmove", handleTouchMove, false)
-
-let initialX = null;
-let initialY = null;
 
 function handleTouchStart(event) {
   initialX = event.touches[0].clientX;
@@ -309,6 +350,9 @@ function handleTouchMoveOE(event) {
       containerFadeOE.classList.remove("active");
     }
   }
+
+  initialX = null;
+  initialY = null;
 }
 
 prevArrowOE.addEventListener("click", () => {
@@ -358,6 +402,39 @@ const containerFadeVideos = document.querySelector(
 const prevArrowVideos = document.querySelector("#videosNews .carousel_prev");
 const nextArrowVideos = document.querySelector("#videosNews .carousel_next");
 
+containerCarouselVideos.addEventListener("touchstart", handleTouchStartVideos, false)
+containerCarouselVideos.addEventListener("touchmove", handleTouchMoveVideos, false)
+
+function handleTouchStartVideos(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveVideos(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselVideos.scrollLeft += containerCarouselVideos.offsetWidth;
+    } else {
+      containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
+    }
+  }
+
+  initialX = null;
+  initialY = null;
+}
+
+
+
 prevArrowVideos.addEventListener("click", () => {
   containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
   containerFadeVideos.classList.remove("active");
@@ -367,7 +444,15 @@ nextArrowVideos.addEventListener("click", () => {
   containerFadeVideos.classList.add("active");
 });
 
-let quantityVideos = 4;
+let quantityVideos;
+
+if (screenWidth <= 540) {
+  quantityVideos = 2;
+} else if (screenWidth <= 980) {
+  quantityVideos = 3;
+} else {
+  quantityVideos = 4;
+}
 
 let itemWidthVideos = 100 / quantityVideos;
 

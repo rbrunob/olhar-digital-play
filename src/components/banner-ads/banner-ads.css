@@ -33,4 +33,8 @@
         width: var(--mw-100);
         padding: 10% 0 0;
     }
+
+    .bannerads_image {
+        width: 100%;
+    }
 }
