@@ -78,7 +78,7 @@
 
 .carousel_content {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: flex-start;
     width: 100%;
     flex: 0 1 auto;

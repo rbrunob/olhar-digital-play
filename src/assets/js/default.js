@@ -116,6 +116,40 @@ const carouselItem = document.querySelectorAll(
 const prevArrow = document.querySelector("#carouselArrows .carousel_prev");
 const nextArrow = document.querySelector("#carouselArrows .carousel_next");
 
+containerCarousel.addEventListener("touchstart", handleTouchStart, false)
+containerCarousel.addEventListener("touchmove", handleTouchMove, false)
+
+let initialX = null;
+let initialY = null;
+
+function handleTouchStart(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarousel.scrollLeft += containerCarousel.offsetWidth;
+    } else {
+      containerCarousel.scrollLeft -= containerCarousel.offsetWidth;
+    }
+  }
+
+  initialX = null;
+  initialY = null;
+}
+
 prevArrow.addEventListener("click", () => {
   containerCarousel.scrollLeft -= containerCarousel.offsetWidth;
 });
@@ -123,12 +157,25 @@ nextArrow.addEventListener("click", () => {
   containerCarousel.scrollLeft += containerCarousel.offsetWidth;
 });
 
-let quantity = 3;
+let screenWidth = window.screen.width;
+let quantity;
+
+if (screenWidth <= 540) {
+  quantity = 2;
+} else if (screenWidth <= 980) {
+  quantity = 3;
+} else {
+  quantity = 3;
+}
 
 let itemWidth = 100 / quantity;
 
 carouselItem.forEach((item) => {
-  item.style.width = `calc(${itemWidth}% - 40px)`;
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidth}%)`;
+  } else {
+    item.style.width = `calc(${itemWidth}% - 40px)`;
+  }
 });
 
 // CAROUSEL EPS OD
@@ -150,6 +197,40 @@ const nextArrowOD = document.querySelector(
   "#carouselFadeArrows .carousel_next"
 );
 
+containerCarouselEpsOD.addEventListener("touchstart", handleTouchStartOD, false)
+containerCarouselEpsOD.addEventListener("touchmove", handleTouchMoveOD, false)
+
+
+function handleTouchStartOD(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveOD(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselEpsOD.scrollLeft += containerCarouselEpsOD.offsetWidth;
+      containerFade.classList.add("active");
+    } else {
+      containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
+      containerFade.classList.remove("active");
+    }
+  }
+
+  initialX = null;
+  initialY = null;
+}
+
 prevArrowOD.addEventListener("click", () => {
   containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
   containerFade.classList.remove("active");
@@ -159,12 +240,26 @@ nextArrowOD.addEventListener("click", () => {
   containerFade.classList.add("active");
 });
 
-let quantityOD = 4;
+
+
+let quantityOD
+
+if (screenWidth <= 540) {
+  quantityOD = 2;
+} else if (screenWidth <= 980) {
+  quantityOD = 3;
+} else {
+  quantityOD = 4;
+}
 
 let itemWidthOD = 100 / quantityOD;
 
 carouselItemEpsOD.forEach((item) => {
-  item.style.width = `calc(${itemWidthOD}% - 40px)`;
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidthOD}%)`;
+  } else {
+    item.style.width = `calc(${itemWidthOD}% - 40px)`;
+  }
 });
 
 // CAROUSEL EPS OE
@@ -186,6 +281,36 @@ const nextArrowOE = document.querySelector(
   "#carouselFadeArrowsTwo .carousel_next"
 );
 
+containerCarouselEpsOE.addEventListener("touchstart", handleTouchStartOE, false)
+containerCarouselEpsOE.addEventListener("touchmove", handleTouchMoveOE, false)
+
+function handleTouchStartOE(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveOE(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselEpsOE.scrollLeft += containerCarouselEpsOE.offsetWidth;
+      containerFadeOE.classList.add("active");
+    } else {
+      containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
+      containerFadeOE.classList.remove("active");
+    }
+  }
+}
+
 prevArrowOE.addEventListener("click", () => {
   containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
   containerFadeOE.classList.remove("active");
@@ -195,12 +320,27 @@ nextArrowOE.addEventListener("click", () => {
   containerFadeOE.classList.add("active");
 });
 
-let quantityOE = 4;
+
+
+let quantityOE
+
+if (screenWidth <= 540) {
+  quantityOE = 2;
+} else if (screenWidth <= 980) {
+  quantityOE = 3;
+} else {
+  quantityOE = 4
+}
+
 
 let itemWidthOE = 100 / quantityOE;
 
 carouselItemEpsOE.forEach((item) => {
-  item.style.width = `calc(${itemWidthOE}% - 40px)`;
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidthOE}%)`;
+  } else {
+    item.style.width = `calc(${itemWidthOE}% - 40px)`;
+  }
 });
 
 // CAROUSEL VIDEOS

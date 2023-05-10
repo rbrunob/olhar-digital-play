@@ -111,4 +111,12 @@ section#carouselFadeArrows {
     #carouselFadeArrows .carousel_container .carousel_prev {
         display: none;
     }
+
+    #carouselFadeArrows .carousel_container::after {
+        display: none;
+    }
+
+    #carouselFadeArrows .carousel_container.active::before {
+        display: none;
+    }
 }
