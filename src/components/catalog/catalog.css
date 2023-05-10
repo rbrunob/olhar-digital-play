@@ -197,4 +197,16 @@
         display: none;
     }
 
+    .container_carousel_posters .container_posters .poster {
+        margin: 0 10px 0;
+    }
+
+    #catalog .container_carousel_posters .carousel_next {
+        display: none;
+    }
+
+    #catalog .container_carousel_posters .carousel_prev {
+        display: none;
+    }
+
 }

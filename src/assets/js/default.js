@@ -473,6 +473,37 @@ const containerFadeCatalog = document.querySelector(
 const prevArrowCatalog = document.querySelector("#catalog .carousel_prev");
 const nextArrowCatalog = document.querySelector("#catalog .carousel_next");
 
+containerCarouselCatalog.addEventListener("touchstart", handleTouchStartCatalog, false)
+containerCarouselCatalog.addEventListener("touchmove", handleTouchMoveCatalog, false)
+
+function handleTouchStartCatalog(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveCatalog(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselCatalog.scrollLeft += containerCarouselCatalog.offsetWidth;
+    } else {
+      containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
+    }
+
+    initialX = null;
+    initialY = null;
+  }
+}
+
 prevArrowCatalog.addEventListener("click", () => {
   containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
   containerFadeCatalog.classList.remove("active");
@@ -482,7 +513,15 @@ nextArrowCatalog.addEventListener("click", () => {
   containerFadeCatalog.classList.add("active");
 });
 
-let quantityCatalog = 6;
+let quantityCatalog;
+
+if (screenWidth <= 540) {
+  quantityCatalog = 3;
+} else if (screenWidth <= 980) {
+  quantityCatalog = 5;
+} else {
+  quantityCatalog = 6;
+}
 
 let itemWidthCatalog = 100 / quantityCatalog;
 
@@ -500,6 +539,37 @@ const carouselItemFree = document.querySelectorAll(
 const prevArrowFree = document.querySelector("#freeChannel .carousel_prev");
 const nextArrowFree = document.querySelector("#freeChannel .carousel_next");
 
+containerCarouselFree.addEventListener("touchstart", handleTouchStartFree, false)
+containerCarouselFree.addEventListener("touchmove", handleTouchMoveFree, false)
+
+function handleTouchStartFree(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveFree(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
+    } else {
+      containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
+    }
+
+    initialX = null;
+    initialY = null;
+  }
+}
+
 prevArrowFree.addEventListener("click", () => {
   containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
 });
@@ -507,12 +577,23 @@ nextArrowFree.addEventListener("click", () => {
   containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
 });
 
-let quantityFree = 3;
+let quantityFree
+
+if (screenWidth <= 540) {
+  quantityFree = 1;
+} else {
+  quantityFree = 3;
+}
 
 let itemWidthFree = 100 / quantityFree;
 
 carouselItemFree.forEach((item) => {
-  item.style.width = `calc(${itemWidthFree}% - 40px)`;
+
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidthFree}% - 40px)`;
+  } else {
+    item.style.width = `calc(${itemWidthFree}% - 40px)`;
+  }
 });
 
 // STORIES
@@ -530,6 +611,38 @@ const containerFadeStories = document.querySelector(
 const prevArrowStories = document.querySelector("#stories .carousel_prev");
 const nextArrowStories = document.querySelector("#stories .carousel_next");
 
+containerCarouselStories.addEventListener("touchstart", handleTouchStartStories, false)
+containerCarouselStories.addEventListener("touchmove", handleTouchMoveStories, false)
+
+function handleTouchStartStories(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveStories(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
+    } else {
+      containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
+    }
+
+    initialX = null;
+    initialY = null;
+  }
+}
+
+
 prevArrowStories.addEventListener("click", () => {
   containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
   containerFadeStories.classList.remove("active");
@@ -539,7 +652,16 @@ nextArrowStories.addEventListener("click", () => {
   containerFadeStories.classList.add("active");
 });
 
-let quantityStories = 5;
+let quantityStories;
+
+if (screenWidth <= 540) {
+  quantityStories = 2;
+} else if (screenWidth <= 980) {
+  quantityStories = 4;
+} else {
+  quantityStories = 5;
+}
+
 
 let itemWidthStories = 100 / quantityStories;
 
@@ -608,6 +730,11 @@ stories.forEach((storie) => {
         <div class="storie_open_functions">
             <div class="play_pause">
             </div>
+            <div class="close_button">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5 9.84876L21.7812 0.567505L24.4343 3.22063L15.1531 12.5019L24.4343 21.7831L21.7812 24.4344L12.5 15.1531L3.21871 24.4344L0.569336 21.7813L9.85059 12.5L0.569336 3.21875L3.21871 0.571255L12.5 9.85251V9.84876Z" fill="black"/>
+              </svg>
+            </div>
           </div>
         <div class="storie_open_row">
           <div class="stories_texts">
@@ -631,10 +758,12 @@ stories.forEach((storie) => {
     const dotsStories = document.querySelectorAll(".dot_progress"); //progressBarElements
     const pauseStorie = document.querySelector(".play_pause");
     const closeButton = document.querySelector(".close");
+    const secundaryClose = document.querySelector(".close_button");
     const imageStories = document.querySelectorAll(".image");
     const textStories = document.querySelectorAll(".stories_texts p");
     const containerStories = document.querySelector(".storie_open_row");
     const resetArea = document.querySelector(".reset");
+    const modalStorieContainer = document.querySelector(".storie_open");
 
     // default variables
     let currentProgressIndex = 0;
@@ -660,7 +789,8 @@ stories.forEach((storie) => {
             setTimeout(() => {
               resetArea.classList.add("active");
               pauseStorie.classList.add("active");
-            }, 200);
+              pauseStorie.style.display = "none";
+            }, 200)
 
             resetArea.innerHTML = `
               <div class="reset_container">
@@ -672,10 +802,10 @@ stories.forEach((storie) => {
                 <div>
               </div>
             `;
-
             const resetButton = document.querySelector(".reset_button");
             resetButton.addEventListener("click", () => {
               pauseStorie.classList.remove("active");
+              pauseStorie.style.display = "block";
 
               currentImage = 0;
               currentText = 0;
@@ -756,26 +886,79 @@ stories.forEach((storie) => {
       }
     })
 
-    containerStories.addEventListener("mousedown", () => {
-      isPause = true;
-      pauseStorie.classList.add("active");
-    })
+    if (screenWidth <= 980) {
+      document.body.style.overflow = 'hidden';
+      document.body.scroll = "no"; // IE
 
-    containerStories.addEventListener("mouseup", () => {
-      isPause = false;
-      pauseStorie.classList.remove("active");
-    })
+
+      containerStories.addEventListener("touchstart", () => {
+        handleCloseSlideStart;
+        isPause = true;
+        pauseStorie.classList.add("active");
+      }, false)
+
+      containerStories.addEventListener("touchend", () => {
+        isPause = false;
+        pauseStorie.classList.remove("active");
+      }, false)
+
+      containerStories.addEventListener("touchmove", handleCloseSlide, false);
+
+      function handleCloseSlideStart(event) {
+        initialX = event.touches[0].clientX;
+        initialY = event.touches[0].clientY;
+      }
+
+      function handleCloseSlide(event) {
+        if (!initialX || !initialY) {
+          return;
+        }
+
+        let currentX = event.touches[0].clientX;
+        let currentY = event.touches[0].clientY;
+
+        let xDiff = initialX - currentX;
+        let yDiff = initialY - currentY;
+
+        if (Math.abs(yDiff) > Math.abs(xDiff)) {
+          if (yDiff > 0) {
+            modalStorieContainer.classList.add("bounce_up");
+            setTimeout(closeSlides, 700)
+          } else if (yDiff < 0) {
+            modalStorieContainer.classList.add("bounce_up");
+            setTimeout(closeSlides, 700)
+          }
+
+          initialX = null;
+          initialY = null;
+        }
+      }
+
+    } else {
+      containerStories.addEventListener("mousedown", () => {
+        isPause = true;
+        pauseStorie.classList.add("active");
+      })
+
+      containerStories.addEventListener("mouseup", () => {
+        isPause = false;
+        pauseStorie.classList.remove("active");
+      })
+    }
 
 
     // close stories
     const closeSlides = () => {
       containerStorie.classList.remove("active");
+      document.documentElement.style.overflow = 'auto';
+      document.body.scroll = "yes"; // IE
       setTimeout(() => {
         containerStorie.classList.remove("hidden");
         isPause == true
       }, 200);
     }
     closeButton.addEventListener("click", closeSlides);
+    secundaryClose.addEventListener("click", closeSlides);
 
     // BOTÃO NEXT
     const nextStorie = document.querySelector(".storie_open_next");

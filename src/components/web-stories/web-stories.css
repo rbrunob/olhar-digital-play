@@ -228,7 +228,9 @@
     height: 780px;
     display: flex;
     align-items: center;
+    transform: translateY(0px) scale(1);
     justify-content: center;
+    transition: all 0.8s cubic-bezier(0.73, -0.02, 0.19, 1.17);
     overflow: hidden;
     border-radius: 20px;
     position: relative;
@@ -319,7 +321,7 @@
     height: auto;
     top: 30px;
     gap: 10px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .storie_open_functions .play_pause {
@@ -493,6 +495,25 @@
     height: auto;
 }
 
+.close_button svg path {
+    fill: white;
+}
+
+.close_button svg {
+    width: 100%;
+    height: auto;
+}
+
+.close_button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 540px) {
     #stories .stories_row {
         width: var(--mw-90);
@@ -517,8 +538,9 @@
     }
 
     .storie_open {
-        width: var(--mw-80);
-        height: 80%;
+        width: 95%;
+        height: 90%;
+        border-radius: 0;
     }
 
     .storie_open_prev {
@@ -535,5 +557,21 @@
 
     .storie_open_prev:hover {
         opacity: 0;
+    }
+
+    #stories .stories_container::after {
+        display: none;
+    }
+
+    #stories .stories_container::before {
+        display: none;
+    }
+
+    .storie_open.bounce_down {
+        transform: translateY(-100%) scale(.6);
+    }
+
+    .storie_open.bounce_up {
+        transform: translateY(100%) scale(.6);
     }
 }
