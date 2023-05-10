@@ -165,4 +165,12 @@
     .carousel_title .title {
         padding: 0 20px;
     }
+
+    #carouselArrows .carousel_container .carousel_next {
+        display: none;
+    }
+    
+    #carouselArrows .carousel_container .carousel_prev {
+        display: none;
+    }
 }

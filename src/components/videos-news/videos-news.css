@@ -122,3 +122,13 @@ section#videosNews {
     margin: 0 auto;
     max-width: 1920px;
 }
+
+@media screen and (max-width: 540px) {
+    #videosNews .carousel_container .carousel_next {
+        display: none;
+    }
+
+    #videosNews .carousel_container .carousel_prev {
+        display: none;
+    }
+}

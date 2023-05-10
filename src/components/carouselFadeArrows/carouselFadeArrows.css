@@ -102,3 +102,13 @@ section#carouselFadeArrows {
     margin: 0 auto;
     max-width: 1920px;
 }
+
+@media screen and (max-width: 540px) {
+    #carouselFadeArrows .carousel_container .carousel_next {
+        display: none;
+    }
+
+    #carouselFadeArrows .carousel_container .carousel_prev {
+        display: none;
+    }
+}

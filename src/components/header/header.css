@@ -192,3 +192,9 @@ header .header_row .container_logo .logo {
 .container_nav_menu .nav_item a:hover {
     color: var(--text-green-400);
 }
+
+@media screen and (max-width: 540px) {
+    header .header_row nav {
+        display: none;
+    }
+}
