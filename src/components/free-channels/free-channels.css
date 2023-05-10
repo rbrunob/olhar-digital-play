@@ -48,3 +48,26 @@
     z-index: 1;
     left: 0;
 }
+
+@media screen and (max-width: 540px) {
+    .carousel_title {
+        justify-content: center;
+    }
+
+    #freeChannel .carousel_title .title {
+        padding: 0 10px;
+    }
+
+    .carousel-row {
+        width: var(--mw-90);
+        padding: 10% 0;
+    }
+
+    #freeChannel .carousel_container .carousel_prev {
+        display: none;
+    }
+
+    #freeChannel .carousel_container .carousel_next {
+        display: none;
+    }
+}

@@ -178,3 +178,14 @@
 #catalog .container_carousel_posters.active::before {
     width: 100%;
 }
+
+@media screen and (max-width: 540px) {
+    #catalog .catalog_row {
+        width: var(--mw-90);
+        padding: 10% 0;
+    }
+
+    .catalog_row .catalog_title {
+        font-size: var(--text-2xl);
+    }
+}

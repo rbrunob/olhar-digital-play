@@ -160,3 +160,9 @@
     color: var(--text-white);
     background: var(--bg-green-400);
 }
+
+@media screen and (max-width: 540px) {
+    .carousel_title .title {
+        padding: 0 20px;
+    }
+}
