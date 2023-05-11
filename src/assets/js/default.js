@@ -150,16 +150,16 @@ function handleTouchMoveSlide(event) {
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     if (xDiff > 0) {
-      const nextIndex = slideIndex >= dots.length - 1 ? 0 : slideIndex + 1;
+      const prevIndex = slideIndex <= 0 ? dots.length - 1 : slideIndex - 1;
 
-      slideIndex = nextIndex;
+      slideIndex = prevIndex;
 
       updateActiveSlide();
       updateActiveDot();
     } else {
-      const prevIndex = slideIndex <= 0 ? dots.length - 1 : slideIndex - 1;
+      const nextIndex = slideIndex >= dots.length - 1 ? 0 : slideIndex + 1;
 
-      slideIndex = prevIndex;
+      slideIndex = nextIndex;
 
       updateActiveSlide();
       updateActiveDot();
