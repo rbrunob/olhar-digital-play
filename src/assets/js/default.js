@@ -202,7 +202,7 @@ let screenWidth = window.screen.width;
 let quantity;
 
 if (screenWidth <= 540) {
-  quantity = 2;
+  quantity = 1.5;
 } else if (screenWidth <= 980) {
   quantity = 3;
 } else {
@@ -447,7 +447,7 @@ nextArrowVideos.addEventListener("click", () => {
 let quantityVideos;
 
 if (screenWidth <= 540) {
-  quantityVideos = 2;
+  quantityVideos = 1.5;
 } else if (screenWidth <= 980) {
   quantityVideos = 3;
 } else {
@@ -580,7 +580,7 @@ nextArrowFree.addEventListener("click", () => {
 let quantityFree
 
 if (screenWidth <= 540) {
-  quantityFree = 1;
+  quantityFree = 1.2;
 } else {
   quantityFree = 3;
 }
@@ -596,6 +596,67 @@ carouselItemFree.forEach((item) => {
   }
 });
 
+// MOVIES PLAYING
+const containerCarouselPlaying = document.querySelector(
+  "#moviesPlaying .carousel_content"
+);
+const carouselItemPlaying = document.querySelectorAll(
+  "#moviesPlaying .carousel_item"
+);
+const prevArrowPlaying = document.querySelector("#moviesPlaying .carousel_prev");
+const nextArrowPlaying = document.querySelector("#moviesPlaying .carousel_next");
+
+containerCarouselPlaying.addEventListener("touchstart", handleTouchStartFree, false)
+containerCarouselPlaying.addEventListener("touchmove", handleTouchMoveFree, false)
+
+function handleTouchStartFree(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveFree(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
+    } else {
+      containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
+    }
+
+    initialX = null;
+    initialY = null;
+  }
+}
+
+prevArrowPlaying.addEventListener("click", () => {
+  containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
+});
+nextArrowPlaying.addEventListener("click", () => {
+  containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
+});
+
+let quantityPlaying
+
+if (screenWidth <= 540) {
+  quantityPlaying = 1.2;
+} else {
+  quantityPlaying = 3;
+}
+
+let itemWidthPlaying = 100 / quantityPlaying;
+
+carouselItemPlaying.forEach((item) => {
+  item.style.width = `calc(${itemWidthPlaying}% - 40px)`;
+});
 // STORIES
 
 //STORIES CARROUSEL
@@ -655,7 +716,7 @@ nextArrowStories.addEventListener("click", () => {
 let quantityStories;
 
 if (screenWidth <= 540) {
-  quantityStories = 2;
+  quantityStories = 1.5;
 } else if (screenWidth <= 980) {
   quantityStories = 4;
 } else {
@@ -887,7 +948,7 @@ stories.forEach((storie) => {
     })
 
     if (screenWidth <= 980) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       document.body.scroll = "no"; // IE
 
 
@@ -950,10 +1011,10 @@ stories.forEach((storie) => {
     // close stories
     const closeSlides = () => {
       containerStorie.classList.remove("active");
-      document.documentElement.style.overflow = 'auto';
-      document.body.scroll = "yes"; // IE
       setTimeout(() => {
         containerStorie.classList.remove("hidden");
+        document.documentElement.style.overflow = 'auto';
+        document.body.scroll = "yes"; // IE
         isPause == true
       }, 200);
     }

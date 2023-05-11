@@ -22,86 +22,60 @@
     margin: 0 0 40px;
 }
 
-.moviesplaying_items {
-    display: flex;
-    align-items: center;
+#moviesPlaying .carousel_title {
     justify-content: center;
-    gap: 30px;
-    height: auto;
-    width: 100%;
+    margin: 0px auto 30px;
 }
 
-.moviesplaying_item {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+#moviesPlaying .carousel_title .title {
+    background: transparent;
+    color: white;
+    padding: 0;
+    text-align: center;
 }
 
-.moviesplaying_item .item_image {
-    width: 360px;
-    height: 202px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#moviesPlaying .carousel_title::after {
+    display: none;
 }
 
-.moviesplaying_item .item_image img {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+#moviesPlaying .carousel_prev {
+    display: none;
 }
 
-.moviesplaying_item .item_texts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+#moviesPlaying .carousel_next {
+    display: none;
 }
 
-.moviesplaying_item .item_texts .texts_title {
-    color: var(--text-white);
-    font-size: var(--text-xl);
-    font-weight: var(--font-normal);
+#moviesPlaying .item_texts {
+    color: white;
 }
 
-.moviesplaying_item .item_texts .texts_description {
-    width: 100%;
-    color: var(--text-white);
+#moviesPlaying .item_texts .texts_title {
+    color: white;
+    font-weight: 300;
 }
 
-.item_button {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#moviesPlaying .item_texts .texts_description {
+    color: white;
 }
 
-.moviesplaying_item .item_button .button {
-    color: var(--text-white);
-    border-color: var(--bg-white);
+#moviesPlaying .item_button .button {
+    color: white;
+    border: 1px solid white;
 }
 
-.moviesplaying_item .item_button .button:hover {
-    background: var(--bg-white);
+#moviesPlaying .item_button .button:hover {
+    background: white;
     color: var(--text-green-400);
 }
 
+
 @media screen and (max-width: 540px) {
-    .moviesplaying_title {
-        text-align: center;
+    #moviesPlaying .carousel_next {
+        display: none;
     }
 
-    .moviesplaying_items {
-        flex-direction: column;
-    }
-
-    #moviesPlaying .moviesplaying_row {
-        padding: 15% 0;
+    #moviesPlaying .carousel_prev {
+        display: none;
     }
 }

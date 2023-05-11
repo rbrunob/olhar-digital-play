@@ -185,6 +185,10 @@
         padding: 10% 0;
     }
 
+    .call_to_action p {
+        width: 150px;
+    }
+
     .catalog_row .catalog_title {
         font-size: var(--text-2xl);
     }
