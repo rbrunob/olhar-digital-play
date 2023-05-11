@@ -1,7 +1,9 @@
 <header>
     <div class="header_row">
         <div class="container_logo">
-            <img src="./src/assets/images/logo_olhar_digital_news.svg" alt="Logo Olhar Digital News" class="logo" />
+            <a href="index.php">
+                <img src="./src/assets/images/logo_olhar_digital_news.svg" alt="Logo Olhar Digital News" class="logo" />
+            </a>
         </div>
         <div class="menu_toggle">
             <div class="menu_lines"></div>
