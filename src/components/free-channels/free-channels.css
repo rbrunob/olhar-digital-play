@@ -52,6 +52,8 @@
 @media screen and (max-width: 540px) {
     .carousel_title {
         justify-content: center;
+        width: 90%;
+        margin: 0 auto 30px;
     }
 
     #freeChannel .carousel_title .title {
@@ -59,7 +61,7 @@
     }
 
     .carousel-row {
-        width: var(--mw-90);
+        width: var(--mw-100);
         padding: 10% 0;
     }
 

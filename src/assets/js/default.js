@@ -1,3 +1,4 @@
+let screenWidth = window.screen.width;
 const buttonSearch = document.querySelector(".button_search");
 const inputSearch = document.querySelector(".input_search");
 const containerInput = document.querySelector(".container_input");
@@ -6,6 +7,25 @@ buttonSearch.addEventListener("click", () => {
   containerInput.classList.toggle("active");
   inputSearch.focus();
 });
+
+//MENU
+const menuNav = document.querySelector("header .header_row nav");
+const menuToggle = document.querySelector(".menu_toggle");
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  menuNav.classList.toggle("active");
+})
+
+if (screenWidth <= 1000) {
+  menuNav.classList.add("mobile");
+  menuNav.classList.remove("desktop");
+} else {
+  menuNav.classList.add("desktop");
+  menuNav.classList.remove("mobile");
+}
+
+
 
 // DATA ATUALIZADA DO FOOTER
 
@@ -198,7 +218,7 @@ nextArrow.addEventListener("click", () => {
   containerCarousel.scrollLeft += containerCarousel.offsetWidth;
 });
 
-let screenWidth = window.screen.width;
+
 let quantity;
 
 if (screenWidth <= 540) {
@@ -606,15 +626,15 @@ const carouselItemPlaying = document.querySelectorAll(
 const prevArrowPlaying = document.querySelector("#moviesPlaying .carousel_prev");
 const nextArrowPlaying = document.querySelector("#moviesPlaying .carousel_next");
 
-containerCarouselPlaying.addEventListener("touchstart", handleTouchStartFree, false)
-containerCarouselPlaying.addEventListener("touchmove", handleTouchMoveFree, false)
+containerCarouselPlaying.addEventListener("touchstart", handleTouchStartPlaying, false)
+containerCarouselPlaying.addEventListener("touchmove", handleTouchMovePlaying, false)
 
-function handleTouchStartFree(event) {
+function handleTouchStartPlaying(event) {
   initialX = event.touches[0].clientX;
   initialY = event.touches[0].clientY;
 }
 
-function handleTouchMoveFree(event) {
+function handleTouchMovePlaying(event) {
   if (!initialX || !initialY) {
     return;
   }

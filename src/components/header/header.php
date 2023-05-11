@@ -3,7 +3,12 @@
         <div class="container_logo">
             <img src="./src/assets/images/logo_olhar_digital_news.svg" alt="Logo Olhar Digital News" class="logo" />
         </div>
-        <nav>
+        <div class="menu_toggle">
+            <div class="menu_lines"></div>
+            <div class="menu_lines"></div>
+            <div class="menu_lines"></div>
+        </div>
+        <nav class="desktop">
             <ul class="container_nav_menu">
                 <li class="nav_item"><a href="noticias.php">NOTÍCIAS</a></li>
                 <li class="nav_item"><a href="videos.php">VÍDEOS</a></li>
