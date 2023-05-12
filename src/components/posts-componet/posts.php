@@ -4,7 +4,7 @@
             <p>../ <a href="noticias.php">News</a> /<span>Notícia</span></p>
         </div>
         <div class="banner_news_full">
-            <img src="./src/assets/images/noticia-panda.webp" alt="noticia" />
+            <img src="./src/assets/images/noticia-panda-full.webp" alt="noticia" />
         </div>
         <div class="posts_content">
             <div class="post_title">

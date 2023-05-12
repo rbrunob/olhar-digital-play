@@ -1,12 +1,16 @@
 let screenWidth = window.screen.width;
 const buttonSearch = document.querySelector(".button_search");
 const inputSearch = document.querySelector(".input_search");
-const containerInput = document.querySelector(".container_input");
+const containerInput = document.querySelector(".container_button_search");
 
 buttonSearch.addEventListener("click", () => {
-  containerInput.classList.toggle("active");
   inputSearch.focus();
+  containerInput.classList.toggle("active");
 });
+
+inputSearch.addEventListener("keydown", () => {
+  console.log(inputSearch.value);
+})
 
 //MENU
 const menuNav = document.querySelector("header .header_row nav");
@@ -24,8 +28,6 @@ if (screenWidth <= 1000) {
   menuNav.classList.add("desktop");
   menuNav.classList.remove("mobile");
 }
-
-
 
 // DATA ATUALIZADA DO FOOTER
 
