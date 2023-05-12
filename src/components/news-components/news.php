@@ -1,10 +1,7 @@
 <section id=newsComponent>
     <div class="news_component_row">
-        <div class="news_component_title">
-            <h1>Olhar Digital <span>News</span></h1>
-        </div>
         <div class="container_news">
-            <a class="news_item">
+            <a href="noticia.php" class="news_item">
                 <div class="news_image">
                     <img src="./src/assets/images/noticia-panda.webp" alt="news" />
                 </div>
@@ -19,7 +16,7 @@
                     </div>
                 </div>
             </a>
-            <a class="news_item">
+            <a href="noticia.php" class="news_item">
                 <div class="news_image">
                     <img src="./src/assets/images/noticia-panda.webp" alt="news" />
                 </div>
@@ -34,7 +31,7 @@
                     </div>
                 </div>
             </a>
-            <a class="news_item">
+            <a href="noticia.php" class="news_item">
                 <div class="news_image">
                     <img src="./src/assets/images/noticia-panda.webp" alt="news" />
                 </div>
@@ -49,7 +46,7 @@
                     </div>
                 </div>
             </a>
-            <a class="news_item">
+            <a href="noticia.php" class="news_item">
                 <div class="news_image">
                     <img src="./src/assets/images/noticia-panda.webp" alt="news" />
                 </div>

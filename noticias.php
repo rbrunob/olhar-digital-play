@@ -14,6 +14,9 @@
     <? include("./src/components/header/header.php") ?>
 
     <main>
+        <div class="news_component_title">
+            <h1>Olhar Digital <span>News</span></h1>
+        </div>
         <? include("./src/components/news-components/news.php") ?>
         <? include("./src/components/banner-ads/banner-ads.php") ?>
         <? include("./src/components/news-components/news.php") ?>
