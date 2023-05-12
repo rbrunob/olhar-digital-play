@@ -1,0 +1,106 @@
+#highlightsNews {
+    width: var(--mw-100);
+    height: auto;
+    position: relative;
+}
+
+#highlightsNews .highlights_news {
+    width: var(--mw-60);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 3% 0;
+}
+
+.highlights_news .highlights_news_title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.highlights_news .highlights_news_title h2 {
+    font-size: var(--text-2xl);
+    color: var(--text-gray-400);
+    font-weight: var(--font-semibold);
+    text-align: start;
+}
+
+.highlights_news .container_highlights_news {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 15px;
+}
+
+.highlights_news .container_highlights_news .news_item {
+    text-decoration: none;
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container_highlights_news .news_item .news_image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_highlights_news .news_item .news_image img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.container_highlights_news .news_item .news_content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.news_item .news_content .content_title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.news_item .news_content .content_description {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.news_item .news_content .content_title h3 {
+    text-align: start;
+    font-size: var(--text-md);
+    color: var(--text-gray-400);
+    font-weight: var(--font-normal);
+}
+
+.news_item .news_content .content_description p {
+    font-size: var(--text-sm);
+    line-height: 120%;
+    color: var(--text-gray-300);
+}
