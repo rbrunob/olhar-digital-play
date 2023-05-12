@@ -45,11 +45,17 @@
     max-width: 280px;
     width: 100%;
     height: auto;
+    padding: 5px;
     display: flex;
     flex-direction: column;
+    transition: var(--duration-025);
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.highlights_news .container_highlights_news .news_item:hover {
+    box-shadow: 0 0 10px #00000014;
 }
 
 .container_highlights_news .news_item .news_image {
