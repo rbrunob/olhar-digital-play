@@ -520,6 +520,12 @@
         padding: 10% 0;
     }
 
+    .storie_open_functions {
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        gap: 0px;
+    }
+
     .stories_title {
         justify-content: center;
         width: 90%;
