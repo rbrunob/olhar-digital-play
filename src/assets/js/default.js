@@ -187,6 +187,8 @@ function handleTouchMoveSlide(event) {
 // TODAY'S NEWS
 const carousel = document.querySelector("#carouselArrows .carousel_content");
 const carouselItem = document.querySelectorAll("#carouselArrows .carousel_item");
+const prevArrow = document.querySelector("#carouselArrows .carousel_prev");
+const nextArrow = document.querySelector("#carouselArrows .carousel_next");
 let isDragging = false;
 let startPosition = 0;
 let currentTranslate = 0;
@@ -206,6 +208,7 @@ function dragStart(event) {
 }
 
 function dragEnd(event) {
+  startPosition = event.clientX;
   isDragging = false;
 }
 
@@ -214,18 +217,25 @@ function drag(event) {
     event.preventDefault();
     let currentPosition;
     if (event.type === 'touchmove') {
-      currentPosition = event.touches[0].clientX;
+      currentPosition = event.changedTouches[0].clientX;
     } else {
       currentPosition = event.clientX;
     }
     currentTranslate = currentPosition - startPosition;
     if (currentTranslate < previousTranslate) {
-      carousel.scrollLeft += (startPosition - currentTranslate) / 30;
+      carousel.scrollLeft += (startPosition - currentTranslate - 100);
     } else if (currentTranslate > previousTranslate) {
-      carousel.scrollLeft -= ((currentTranslate * 4) - startPosition) / 30;
+      carousel.scrollLeft -= ((currentTranslate * 4) - startPosition);
     }
   }
 }
+
+prevArrow.addEventListener("click", () => {
+  carousel.scrollLeft -= carousel.offsetWidth;
+});
+nextArrow.addEventListener("click", () => {
+  carousel.scrollLeft += carousel.offsetWidth;
+});
 
 let quantity;
 
