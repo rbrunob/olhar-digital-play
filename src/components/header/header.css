@@ -317,7 +317,8 @@ header .header_row .container_logo .logo {
     }
 
     nav.mobile .container_button_search {
-        display: none;
+        display: flex;
+        width: 100%;
     }
 
     nav.mobile .container_social_media {
@@ -366,5 +367,26 @@ header .header_row .container_logo .logo {
         height: 1px;
         position: relative;
         background: #737373;
+    }
+
+    .container_button_search .button_search img {
+        width: 100%;
+        transform: rotate(0deg);
+    }
+
+    .container_button_search .button_search {
+        background: #0a8624;
+    }
+
+    .container_button_search .button_search::before {
+        display: none;
+    }
+
+    .container_button_search .button_search::after {
+        display: none;
+    }
+
+    .container_button_search .container_input {
+        width: 80%;
     }
 }

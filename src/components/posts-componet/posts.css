@@ -100,3 +100,15 @@
     color: var(--text-gray-500);
     font-weight: var(--font-light);
 }
+
+@media screen and (max-width: 540px) {
+    .post_row {
+        padding: 15% 0;
+        width: var(--mw-90);
+    }
+
+    .post_row .posts_content .post_title h1 {
+        font-size: var(--text-xl);
+        line-height: 140%;
+    }
+}

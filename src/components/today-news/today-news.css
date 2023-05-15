@@ -84,6 +84,9 @@
     flex: 0 1 auto;
     overflow: hidden;
     position: relative;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 
 .carousel_item {
@@ -169,7 +172,7 @@
     #carouselArrows .carousel_container .carousel_next {
         display: none;
     }
-    
+
     #carouselArrows .carousel_container .carousel_prev {
         display: none;
     }

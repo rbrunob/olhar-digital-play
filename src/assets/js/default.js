@@ -3,14 +3,23 @@ const buttonSearch = document.querySelector(".button_search");
 const inputSearch = document.querySelector(".input_search");
 const containerInput = document.querySelector(".container_button_search");
 
-buttonSearch.addEventListener("click", () => {
-  inputSearch.focus();
-  containerInput.classList.toggle("active");
-});
 
-inputSearch.addEventListener("keydown", () => {
-  console.log(inputSearch.value);
-})
+
+if (screenWidth <= 1000) {
+  buttonSearch.addEventListener("click", () => {
+    console.log(inputSearch.value);
+  });
+} else {
+  buttonSearch.addEventListener("click", () => {
+    inputSearch.focus();
+    containerInput.classList.toggle("active");
+  });
+
+  inputSearch.addEventListener("keydown", () => {
+    console.log(inputSearch.value);
+  })
+}
+
 
 //MENU
 const menuNav = document.querySelector("header .header_row nav");
@@ -19,6 +28,7 @@ const menuToggle = document.querySelector(".menu_toggle");
 menuToggle.addEventListener("click", () => {
   menuToggle.classList.toggle("active");
   menuNav.classList.toggle("active");
+  inputSearch.value = '';
 })
 
 if (screenWidth <= 1000) {
@@ -173,53 +183,47 @@ function handleTouchMoveSlide(event) {
 }
 
 // TODAY'S NEWS
-const containerCarousel = document.querySelector(
-  "#carouselArrows .carousel_content"
-);
-const carouselItem = document.querySelectorAll(
-  "#carouselArrows .carousel_item"
-);
-const prevArrow = document.querySelector("#carouselArrows .carousel_prev");
-const nextArrow = document.querySelector("#carouselArrows .carousel_next");
+const carousel = document.querySelector("#carouselArrows .carousel_content");
+const carouselItem = document.querySelectorAll("#carouselArrows .carousel_item");
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let previousTranslate = 0;
 
-containerCarousel.addEventListener("touchstart", handleTouchStart, false)
-containerCarousel.addEventListener("touchmove", handleTouchMove, false)
+carousel.addEventListener('touchstart', dragStart);
+carousel.addEventListener('touchend', dragEnd);
+carousel.addEventListener('touchmove', drag);
 
-function handleTouchStart(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
+function dragStart(event) {
+  if (event.type === 'touchstart') {
+    startPosition = event.touches[0].clientX;
+  } else {
+    startPosition = event.clientX;
+  }
+  isDragging = true;
 }
 
-function handleTouchMove(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
+function dragEnd(event) {
+  isDragging = false;
+}
 
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarousel.scrollLeft += containerCarousel.offsetWidth;
+function drag(event) {
+  if (isDragging) {
+    event.preventDefault();
+    let currentPosition;
+    if (event.type === 'touchmove') {
+      currentPosition = event.touches[0].clientX;
     } else {
-      containerCarousel.scrollLeft -= containerCarousel.offsetWidth;
+      currentPosition = event.clientX;
+    }
+    currentTranslate = currentPosition - startPosition;
+    if (currentTranslate < previousTranslate) {
+      carousel.scrollLeft += (startPosition - currentTranslate) / 30;
+    } else if (currentTranslate > previousTranslate) {
+      carousel.scrollLeft -= (currentTranslate - startPosition) / 30;
     }
   }
-
-  initialX = null;
-  initialY = null;
 }
-
-prevArrow.addEventListener("click", () => {
-  containerCarousel.scrollLeft -= containerCarousel.offsetWidth;
-});
-nextArrow.addEventListener("click", () => {
-  containerCarousel.scrollLeft += containerCarousel.offsetWidth;
-});
-
 
 let quantity;
 

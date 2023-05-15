@@ -34,10 +34,11 @@
 .highlights_news .container_highlights_news {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
     height: auto;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .highlights_news .container_highlights_news .news_item {
@@ -110,4 +111,11 @@
     font-size: var(--text-sm);
     line-height: 120%;
     color: var(--text-gray-300);
+}
+
+@media screen and (max-width: 540px) {
+    #highlightsNews .highlights_news {
+        width: var(--mw-80);
+        padding: 15% 0;
+    }
 }
