@@ -1,9 +1,10 @@
+//default vars
 let screenWidth = window.screen.width;
+
+// const search bar
 const buttonSearch = document.querySelector(".button_search");
 const inputSearch = document.querySelector(".input_search");
 const containerInput = document.querySelector(".container_button_search");
-
-
 
 if (screenWidth <= 1000) {
   buttonSearch.addEventListener("click", () => {
@@ -22,8 +23,7 @@ if (screenWidth <= 1000) {
   })
 }
 
-
-//MENU
+// menu
 const menuNav = document.querySelector("header .header_row nav");
 const menuToggle = document.querySelector(".menu_toggle");
 
@@ -41,8 +41,7 @@ if (screenWidth <= 1000) {
   menuNav.classList.remove("mobile");
 }
 
-// DATA ATUALIZADA DO FOOTER
-
+// date/time footer
 const copyright = document.querySelector(".copyright");
 
 let today = new Date();
@@ -50,7 +49,7 @@ let currentYear = today.getFullYear();
 
 copyright.innerHTML = `<p>© Olhar Digital Play ${currentYear} - Todos os Direitos Reservados.</p>`; // EXIBE SEMPRE O ANO ATUAL
 
-// FIRST CAROUSEL
+// carousel main
 let slideIndex = 0;
 
 const slides = document.querySelectorAll("#carouselMain .carousel_item");
@@ -184,20 +183,92 @@ function handleTouchMoveSlide(event) {
   initialY = null;
 }
 
-// TODAY'S NEWS
+// const all carousel
 const carousel = document.querySelector("#carouselArrows .carousel_content");
 const carouselItem = document.querySelectorAll("#carouselArrows .carousel_item");
 const prevArrow = document.querySelector("#carouselArrows .carousel_prev");
 const nextArrow = document.querySelector("#carouselArrows .carousel_next");
+
+const containerCarouselEpsOD = document.querySelector("#carouselFadeArrows .carousel_content");
+const carouselItemEpsOD = document.querySelectorAll("#carouselFadeArrows .carousel_item");
+const containerFade = document.querySelector("#carouselFadeArrows .carousel_container");
+const prevArrowOD = document.querySelector("#carouselFadeArrows .carousel_prev");
+const nextArrowOD = document.querySelector("#carouselFadeArrows .carousel_next");
+
+const containerCarouselEpsOE = document.querySelector("#carouselFadeArrowsTwo .carousel_content");
+const carouselItemEpsOE = document.querySelectorAll("#carouselFadeArrowsTwo .carousel_item");
+const containerFadeOE = document.querySelector("#carouselFadeArrowsTwo .carousel_container");
+const prevArrowOE = document.querySelector("#carouselFadeArrowsTwo .carousel_prev");
+const nextArrowOE = document.querySelector("#carouselFadeArrowsTwo .carousel_next");
+
+const containerCarouselVideos = document.querySelector("#videosNews .carousel_content");
+const carouselItemVideos = document.querySelectorAll("#videosNews .carousel_item");
+const containerFadeVideos = document.querySelector("#videosNews .carousel_container");
+const prevArrowVideos = document.querySelector("#videosNews .carousel_prev");
+const nextArrowVideos = document.querySelector("#videosNews .carousel_next");
+
+const containerCarouselCatalog = document.querySelector("#catalog .container_posters");
+const carouselItemCatalog = document.querySelectorAll("#catalog .poster");
+const containerFadeCatalog = document.querySelector("#catalog .container_carousel_posters");
+const prevArrowCatalog = document.querySelector("#catalog .carousel_prev");
+const nextArrowCatalog = document.querySelector("#catalog .carousel_next");
+
+const containerCarouselFree = document.querySelector("#freeChannel .carousel_content");
+const carouselItemFree = document.querySelectorAll("#freeChannel .carousel_item");
+const prevArrowFree = document.querySelector("#freeChannel .carousel_prev");
+const nextArrowFree = document.querySelector("#freeChannel .carousel_next");
+
+const containerCarouselPlaying = document.querySelector("#moviesPlaying .carousel_content");
+const carouselItemPlaying = document.querySelectorAll("#moviesPlaying .carousel_item");
+const prevArrowPlaying = document.querySelector("#moviesPlaying .carousel_prev");
+const nextArrowPlaying = document.querySelector("#moviesPlaying .carousel_next");
+
+const containerCarouselStories = document.querySelector("#stories .stories_items");
+const carouselItemStories = document.querySelectorAll("#stories .stories_item");
+const containerFadeStories = document.querySelector("#stories .stories_container");
+const prevArrowStories = document.querySelector("#stories .carousel_prev");
+const nextArrowStories = document.querySelector("#stories .carousel_next");
+
+// carousel mobile variables 
 let isDragging = false;
 let startPosition = 0;
 let currentTranslate = 0;
 let previousTranslate = 0;
 
+// call functions
 carousel.addEventListener('touchstart', dragStart);
 carousel.addEventListener('touchend', dragEnd);
 carousel.addEventListener('touchmove', drag);
 
+containerCarouselEpsOD.addEventListener('touchstart', dragStart);
+containerCarouselEpsOD.addEventListener('touchend', dragEnd);
+containerCarouselEpsOD.addEventListener('touchmove', dragEpsOD);
+
+containerCarouselEpsOE.addEventListener('touchstart', dragStart);
+containerCarouselEpsOE.addEventListener('touchend', dragEnd);
+containerCarouselEpsOE.addEventListener('touchmove', dragEpsOE);
+
+containerCarouselVideos.addEventListener('touchstart', dragStart);
+containerCarouselVideos.addEventListener('touchend', dragEnd);
+containerCarouselVideos.addEventListener('touchmove', dragVideos);
+
+containerCarouselCatalog.addEventListener('touchstart', dragStart);
+containerCarouselCatalog.addEventListener('touchend', dragEnd);
+containerCarouselCatalog.addEventListener('touchmove', dragCatalog);
+
+containerCarouselFree.addEventListener('touchstart', dragStart);
+containerCarouselFree.addEventListener('touchend', dragEnd);
+containerCarouselFree.addEventListener('touchmove', dragFree);
+
+containerCarouselPlaying.addEventListener('touchstart', dragStart);
+containerCarouselPlaying.addEventListener('touchend', dragEnd);
+containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
+
+containerCarouselStories.addEventListener('touchstart', dragStart);
+containerCarouselStories.addEventListener('touchend', dragEnd);
+containerCarouselStories.addEventListener('touchmove', dragStories);
+
+// drag start default
 function dragStart(event) {
   if (event.type === 'touchstart') {
     startPosition = event.touches[0].clientX;
@@ -207,21 +278,28 @@ function dragStart(event) {
   isDragging = true;
 }
 
+// default settings carousel mobile
+const defaultSettings = (event) => {
+  let currentPosition;
+  if (event.type === 'touchmove') {
+    currentPosition = event.changedTouches[0].clientX;
+  } else {
+    currentPosition = event.clientX;
+  }
+  currentTranslate = currentPosition - startPosition;
+}
+
+// drag end default
 function dragEnd(event) {
   startPosition = event.clientX;
   isDragging = false;
 }
 
+// drag move carousel #1
 function drag(event) {
   if (isDragging) {
     event.preventDefault();
-    let currentPosition;
-    if (event.type === 'touchmove') {
-      currentPosition = event.changedTouches[0].clientX;
-    } else {
-      currentPosition = event.clientX;
-    }
-    currentTranslate = currentPosition - startPosition;
+    defaultSettings(event);
     if (currentTranslate < previousTranslate) {
       carousel.scrollLeft += (startPosition - currentTranslate - 100);
     } else if (currentTranslate > previousTranslate) {
@@ -230,6 +308,102 @@ function drag(event) {
   }
 }
 
+//drag move carousel #2
+function dragEpsOD(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselEpsOD.scrollLeft += containerCarouselEpsOD.offsetWidth;
+      containerFade.classList.add("active");
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
+      containerFade.classList.remove("active");
+    }
+  }
+}
+
+//drag move carousel #3
+function dragEpsOE(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselEpsOE.scrollLeft += containerCarouselEpsOE.offsetWidth;
+      containerFadeOE.classList.add("active");
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
+      containerFadeOE.classList.remove("active");
+    }
+  }
+}
+
+//drag move carousel #4
+function dragVideos(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselVideos.scrollLeft += containerCarouselVideos.offsetWidth;
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
+    }
+  }
+}
+
+//drag move carousel #5
+function dragCatalog(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselCatalog.scrollLeft += containerCarouselCatalog.offsetWidth;
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
+    }
+  }
+}
+
+//drag move carousel #6
+function dragFree(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
+    }
+  }
+}
+
+//drag move carousel #7
+function dragPlaying(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
+    }
+  }
+}
+
+//drag move carousel #8
+function dragStories(event) {
+  if (isDragging) {
+    event.preventDefault();
+    defaultSettings(event);
+    if (currentTranslate < previousTranslate) {
+      containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
+    } else if (currentTranslate > previousTranslate) {
+      containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
+    }
+  }
+}
+
+// arrow move carousel #1
 prevArrow.addEventListener("click", () => {
   carousel.scrollLeft -= carousel.offsetWidth;
 });
@@ -237,79 +411,7 @@ nextArrow.addEventListener("click", () => {
   carousel.scrollLeft += carousel.offsetWidth;
 });
 
-let quantity;
-
-if (screenWidth <= 540) {
-  quantity = 1.5;
-} else if (screenWidth <= 980) {
-  quantity = 3;
-} else {
-  quantity = 3;
-}
-
-let itemWidth = 100 / quantity;
-
-carouselItem.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidth}%)`;
-  } else {
-    item.style.width = `calc(${itemWidth}% - 40px)`;
-  }
-});
-
-// CAROUSEL EPS OD
-const containerCarouselEpsOD = document.querySelector(
-  "#carouselFadeArrows .carousel_content"
-);
-const carouselItemEpsOD = document.querySelectorAll(
-  "#carouselFadeArrows .carousel_item"
-);
-
-const containerFade = document.querySelector(
-  "#carouselFadeArrows .carousel_container"
-);
-
-const prevArrowOD = document.querySelector(
-  "#carouselFadeArrows .carousel_prev"
-);
-const nextArrowOD = document.querySelector(
-  "#carouselFadeArrows .carousel_next"
-);
-
-containerCarouselEpsOD.addEventListener("touchstart", handleTouchStartOD, false)
-containerCarouselEpsOD.addEventListener("touchmove", handleTouchMoveOD, false)
-
-
-function handleTouchStartOD(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveOD(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselEpsOD.scrollLeft += containerCarouselEpsOD.offsetWidth;
-      containerFade.classList.add("active");
-    } else {
-      containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
-      containerFade.classList.remove("active");
-    }
-  }
-
-  initialX = null;
-  initialY = null;
-}
-
+// arrow move carousel #2
 prevArrowOD.addEventListener("click", () => {
   containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
   containerFade.classList.remove("active");
@@ -319,80 +421,7 @@ nextArrowOD.addEventListener("click", () => {
   containerFade.classList.add("active");
 });
 
-
-
-let quantityOD
-
-if (screenWidth <= 540) {
-  quantityOD = 2;
-} else if (screenWidth <= 980) {
-  quantityOD = 3;
-} else {
-  quantityOD = 4;
-}
-
-let itemWidthOD = 100 / quantityOD;
-
-carouselItemEpsOD.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidthOD}%)`;
-  } else {
-    item.style.width = `calc(${itemWidthOD}% - 40px)`;
-  }
-});
-
-// CAROUSEL EPS OE
-const containerCarouselEpsOE = document.querySelector(
-  "#carouselFadeArrowsTwo .carousel_content"
-);
-const carouselItemEpsOE = document.querySelectorAll(
-  "#carouselFadeArrowsTwo .carousel_item"
-);
-
-const containerFadeOE = document.querySelector(
-  "#carouselFadeArrowsTwo .carousel_container"
-);
-
-const prevArrowOE = document.querySelector(
-  "#carouselFadeArrowsTwo .carousel_prev"
-);
-const nextArrowOE = document.querySelector(
-  "#carouselFadeArrowsTwo .carousel_next"
-);
-
-containerCarouselEpsOE.addEventListener("touchstart", handleTouchStartOE, false)
-containerCarouselEpsOE.addEventListener("touchmove", handleTouchMoveOE, false)
-
-function handleTouchStartOE(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveOE(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselEpsOE.scrollLeft += containerCarouselEpsOE.offsetWidth;
-      containerFadeOE.classList.add("active");
-    } else {
-      containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
-      containerFadeOE.classList.remove("active");
-    }
-  }
-
-  initialX = null;
-  initialY = null;
-}
-
+// arrow move carousel #3
 prevArrowOE.addEventListener("click", () => {
   containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
   containerFadeOE.classList.remove("active");
@@ -402,77 +431,7 @@ nextArrowOE.addEventListener("click", () => {
   containerFadeOE.classList.add("active");
 });
 
-
-
-let quantityOE
-
-if (screenWidth <= 540) {
-  quantityOE = 2;
-} else if (screenWidth <= 980) {
-  quantityOE = 3;
-} else {
-  quantityOE = 4
-}
-
-
-let itemWidthOE = 100 / quantityOE;
-
-carouselItemEpsOE.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidthOE}%)`;
-  } else {
-    item.style.width = `calc(${itemWidthOE}% - 40px)`;
-  }
-});
-
-// CAROUSEL VIDEOS
-const containerCarouselVideos = document.querySelector(
-  "#videosNews .carousel_content"
-);
-const carouselItemVideos = document.querySelectorAll(
-  "#videosNews .carousel_item"
-);
-
-const containerFadeVideos = document.querySelector(
-  "#videosNews .carousel_container"
-);
-
-const prevArrowVideos = document.querySelector("#videosNews .carousel_prev");
-const nextArrowVideos = document.querySelector("#videosNews .carousel_next");
-
-containerCarouselVideos.addEventListener("touchstart", handleTouchStartVideos, false)
-containerCarouselVideos.addEventListener("touchmove", handleTouchMoveVideos, false)
-
-function handleTouchStartVideos(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveVideos(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselVideos.scrollLeft += containerCarouselVideos.offsetWidth;
-    } else {
-      containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
-    }
-  }
-
-  initialX = null;
-  initialY = null;
-}
-
-
-
+// arrow move carousel #4
 prevArrowVideos.addEventListener("click", () => {
   containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
   containerFadeVideos.classList.remove("active");
@@ -482,66 +441,7 @@ nextArrowVideos.addEventListener("click", () => {
   containerFadeVideos.classList.add("active");
 });
 
-let quantityVideos;
-
-if (screenWidth <= 540) {
-  quantityVideos = 1.5;
-} else if (screenWidth <= 980) {
-  quantityVideos = 3;
-} else {
-  quantityVideos = 4;
-}
-
-let itemWidthVideos = 100 / quantityVideos;
-
-carouselItemVideos.forEach((item) => {
-  item.style.width = `calc(${itemWidthVideos}%)`;
-});
-
-// CATALOG
-const containerCarouselCatalog = document.querySelector(
-  "#catalog .container_posters"
-);
-const carouselItemCatalog = document.querySelectorAll("#catalog .poster");
-
-const containerFadeCatalog = document.querySelector(
-  "#catalog .container_carousel_posters"
-);
-
-const prevArrowCatalog = document.querySelector("#catalog .carousel_prev");
-const nextArrowCatalog = document.querySelector("#catalog .carousel_next");
-
-containerCarouselCatalog.addEventListener("touchstart", handleTouchStartCatalog, false)
-containerCarouselCatalog.addEventListener("touchmove", handleTouchMoveCatalog, false)
-
-function handleTouchStartCatalog(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveCatalog(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselCatalog.scrollLeft += containerCarouselCatalog.offsetWidth;
-    } else {
-      containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
-    }
-
-    initialX = null;
-    initialY = null;
-  }
-}
-
+// arrow move carousel #5
 prevArrowCatalog.addEventListener("click", () => {
   containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
   containerFadeCatalog.classList.remove("active");
@@ -551,63 +451,7 @@ nextArrowCatalog.addEventListener("click", () => {
   containerFadeCatalog.classList.add("active");
 });
 
-let quantityCatalog;
-
-if (screenWidth <= 540) {
-  quantityCatalog = 3;
-} else if (screenWidth <= 980) {
-  quantityCatalog = 5;
-} else {
-  quantityCatalog = 6;
-}
-
-let itemWidthCatalog = 100 / quantityCatalog;
-
-carouselItemCatalog.forEach((item) => {
-  item.style.width = `calc(${itemWidthCatalog}% - 10px)`;
-});
-
-// FREE CHANNELS
-const containerCarouselFree = document.querySelector(
-  "#freeChannel .carousel_content"
-);
-const carouselItemFree = document.querySelectorAll(
-  "#freeChannel .carousel_item"
-);
-const prevArrowFree = document.querySelector("#freeChannel .carousel_prev");
-const nextArrowFree = document.querySelector("#freeChannel .carousel_next");
-
-containerCarouselFree.addEventListener("touchstart", handleTouchStartFree, false)
-containerCarouselFree.addEventListener("touchmove", handleTouchMoveFree, false)
-
-function handleTouchStartFree(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveFree(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
-    } else {
-      containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
-    }
-
-    initialX = null;
-    initialY = null;
-  }
-}
-
+// arrow move carousel #6
 prevArrowFree.addEventListener("click", () => {
   containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
 });
@@ -615,66 +459,7 @@ nextArrowFree.addEventListener("click", () => {
   containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
 });
 
-let quantityFree
-
-if (screenWidth <= 540) {
-  quantityFree = 1.2;
-} else {
-  quantityFree = 3;
-}
-
-let itemWidthFree = 100 / quantityFree;
-
-carouselItemFree.forEach((item) => {
-
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidthFree}% - 40px)`;
-  } else {
-    item.style.width = `calc(${itemWidthFree}% - 40px)`;
-  }
-});
-
-// MOVIES PLAYING
-const containerCarouselPlaying = document.querySelector(
-  "#moviesPlaying .carousel_content"
-);
-const carouselItemPlaying = document.querySelectorAll(
-  "#moviesPlaying .carousel_item"
-);
-const prevArrowPlaying = document.querySelector("#moviesPlaying .carousel_prev");
-const nextArrowPlaying = document.querySelector("#moviesPlaying .carousel_next");
-
-containerCarouselPlaying.addEventListener("touchstart", handleTouchStartPlaying, false)
-containerCarouselPlaying.addEventListener("touchmove", handleTouchMovePlaying, false)
-
-function handleTouchStartPlaying(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMovePlaying(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
-    } else {
-      containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
-    }
-
-    initialX = null;
-    initialY = null;
-  }
-}
-
+// arrow move carousel #7
 prevArrowPlaying.addEventListener("click", () => {
   containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
 });
@@ -682,66 +467,7 @@ nextArrowPlaying.addEventListener("click", () => {
   containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
 });
 
-let quantityPlaying
-
-if (screenWidth <= 540) {
-  quantityPlaying = 1.2;
-} else {
-  quantityPlaying = 3;
-}
-
-let itemWidthPlaying = 100 / quantityPlaying;
-
-carouselItemPlaying.forEach((item) => {
-  item.style.width = `calc(${itemWidthPlaying}% - 40px)`;
-});
-// STORIES
-
-//STORIES CARROUSEL
-const containerCarouselStories = document.querySelector(
-  "#stories .stories_items"
-);
-const carouselItemStories = document.querySelectorAll("#stories .stories_item");
-
-const containerFadeStories = document.querySelector(
-  "#stories .stories_container"
-);
-
-const prevArrowStories = document.querySelector("#stories .carousel_prev");
-const nextArrowStories = document.querySelector("#stories .carousel_next");
-
-containerCarouselStories.addEventListener("touchstart", handleTouchStartStories, false)
-containerCarouselStories.addEventListener("touchmove", handleTouchMoveStories, false)
-
-function handleTouchStartStories(event) {
-  initialX = event.touches[0].clientX;
-  initialY = event.touches[0].clientY;
-}
-
-function handleTouchMoveStories(event) {
-  if (!initialX || !initialY) {
-    return;
-  }
-
-  let currentX = event.touches[0].clientX;
-  let currentY = event.touches[0].clientY;
-
-  let xDiff = initialX - currentX;
-  let yDiff = initialY - currentY;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
-    } else {
-      containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
-    }
-
-    initialX = null;
-    initialY = null;
-  }
-}
-
-
+// arrow move carousel #8
 prevArrowStories.addEventListener("click", () => {
   containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
   containerFadeStories.classList.remove("active");
@@ -751,24 +477,76 @@ nextArrowStories.addEventListener("click", () => {
   containerFadeStories.classList.add("active");
 });
 
+// width items carousel
+let quantity;
+let quantityFade;
+let quantityCatalog;
 let quantityStories;
 
 if (screenWidth <= 540) {
+  quantity = 1.5;
+  quantityFade = 2;
+  quantityCatalog = 3;
   quantityStories = 1.5;
 } else if (screenWidth <= 980) {
+  quantity = 3;
+  quantityFade = 3;
+  quantityCatalog = 5;
   quantityStories = 4;
 } else {
+  quantity = 3;
+  quantityFade = 4;
+  quantityCatalog = 6;
   quantityStories = 5;
 }
 
-
+let itemWidth = 100 / quantity;
+let itemWidthFade = 100 / quantityFade;
+let itemWidthCatalog = 100 / quantityCatalog;
 let itemWidthStories = 100 / quantityStories;
+
+carouselItem.forEach((item) => {
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidth}%)`;
+  }
+  item.style.width = `calc(${itemWidth}% - 40px)`;
+});
+
+carouselItemEpsOD.forEach((item) => {
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidthFade}%)`;
+  }
+  item.style.width = `calc(${itemWidthFade}% - 40px)`;
+})
+
+carouselItemEpsOE.forEach((item) => {
+  if (screenWidth <= 540) {
+    item.style.width = `calc(${itemWidthFade}%)`;
+  }
+  item.style.width = `calc(${itemWidthFade}% - 40px)`;
+});
+
+carouselItemVideos.forEach((item) => {
+  item.style.width = `calc(${itemWidth}%)`;
+});
+
+carouselItemCatalog.forEach((item) => {
+  item.style.width = `calc(${itemWidthCatalog}% - 10px)`;
+});
+
+carouselItemFree.forEach((item) => {
+  item.style.width = `calc(${itemWidth}% - 40px)`;
+});
+
+carouselItemPlaying.forEach((item) => {
+  item.style.width = `calc(${itemWidth}% - 40px)`;
+});
 
 carouselItemStories.forEach((item) => {
   item.style.width = `calc(${itemWidthStories}% - 20px)`;
 });
 
-// STORIES VIEW
+// stories open view
 const stories = document.querySelectorAll(".stories_item");
 const containerStorie = document.querySelector(".open_storie_container");
 
@@ -987,8 +765,6 @@ stories.forEach((storie) => {
 
     if (screenWidth <= 980) {
       document.documentElement.style.overflow = 'hidden';
-      document.body.scroll = "no"; // IE
-
 
       containerStories.addEventListener("touchstart", () => {
         handleCloseSlideStart;

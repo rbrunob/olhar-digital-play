@@ -27,8 +27,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    width: 285px;
-    height: 160px;
+    width: 100%;
+    height: auto;
 }
 
 #videosNews .carousel_item .item_image .image_category {
