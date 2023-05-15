@@ -15,8 +15,10 @@ if (screenWidth <= 1000) {
     containerInput.classList.toggle("active");
   });
 
-  inputSearch.addEventListener("keydown", () => {
-    console.log(inputSearch.value);
+  inputSearch.addEventListener("keydown", function (event) {
+    if (event.which == 13) {
+      console.log(inputSearch.value)
+    }
   })
 }
 
@@ -218,9 +220,9 @@ function drag(event) {
     }
     currentTranslate = currentPosition - startPosition;
     if (currentTranslate < previousTranslate) {
-      carousel.scrollLeft += (startPosition - currentTranslate) / 30;
+      carousel.scrollLeft += (startPosition - currentTranslate) / 50;
     } else if (currentTranslate > previousTranslate) {
-      carousel.scrollLeft -= (currentTranslate - startPosition) / 30;
+      carousel.scrollLeft -= ((currentTranslate * 4) - startPosition) / 50;
     }
   }
 }
