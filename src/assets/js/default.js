@@ -220,9 +220,9 @@ function drag(event) {
     }
     currentTranslate = currentPosition - startPosition;
     if (currentTranslate < previousTranslate) {
-      carousel.scrollLeft += (startPosition - currentTranslate) / 50;
+      carousel.scrollLeft += (startPosition - currentTranslate) / 30;
     } else if (currentTranslate > previousTranslate) {
-      carousel.scrollLeft -= ((currentTranslate * 4) - startPosition) / 50;
+      carousel.scrollLeft -= ((currentTranslate * 4) - startPosition) / 30;
     }
   }
 }
