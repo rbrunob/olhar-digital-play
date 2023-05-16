@@ -256,7 +256,7 @@ containerCarouselFree.addEventListener('touchmove', dragFree);
 
 containerCarouselPlaying.addEventListener('touchstart', dragStart);
 containerCarouselPlaying.addEventListener('touchend', dragEnd);
-containerCarouselPlaying.addEventListener('touchmove', dragFree);
+containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
 
 // drag start default
 function dragStart(event) {
@@ -368,7 +368,7 @@ function dragFree(event) {
 }
 
 //drag move carousel #7
-function dragFree(event) {
+function dragPlaying(event) {
   if (isDragging) {
     event.preventDefault();
     defaultSettings(event);
