@@ -223,12 +223,6 @@ const carouselItemPlaying = document.querySelectorAll("#moviesPlaying .carousel_
 const prevArrowPlaying = document.querySelector("#moviesPlaying .carousel_prev");
 const nextArrowPlaying = document.querySelector("#moviesPlaying .carousel_next");
 
-const containerCarouselStories = document.querySelector("#stories .stories_items");
-const carouselItemStories = document.querySelectorAll("#stories .stories_item");
-const containerFadeStories = document.querySelector("#stories .stories_container");
-const prevArrowStories = document.querySelector("#stories .carousel_prev");
-const nextArrowStories = document.querySelector("#stories .carousel_next");
-
 // carousel mobile variables 
 let isDragging = false;
 let startPosition = 0;
@@ -262,11 +256,7 @@ containerCarouselFree.addEventListener('touchmove', dragFree);
 
 containerCarouselPlaying.addEventListener('touchstart', dragStart);
 containerCarouselPlaying.addEventListener('touchend', dragEnd);
-containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
-
-containerCarouselStories.addEventListener('touchstart', dragStart);
-containerCarouselStories.addEventListener('touchend', dragEnd);
-containerCarouselStories.addEventListener('touchmove', dragStories);
+containerCarouselPlaying.addEventListener('touchmove', dragFree);
 
 // drag start default
 function dragStart(event) {
@@ -378,7 +368,7 @@ function dragFree(event) {
 }
 
 //drag move carousel #7
-function dragPlaying(event) {
+function dragFree(event) {
   if (isDragging) {
     event.preventDefault();
     defaultSettings(event);
@@ -386,19 +376,6 @@ function dragPlaying(event) {
       containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
     } else if (currentTranslate > previousTranslate) {
       containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
-    }
-  }
-}
-
-//drag move carousel #8
-function dragStories(event) {
-  if (isDragging) {
-    event.preventDefault();
-    defaultSettings(event);
-    if (currentTranslate < previousTranslate) {
-      containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
-    } else if (currentTranslate > previousTranslate) {
-      containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
     }
   }
 }
@@ -467,43 +444,28 @@ nextArrowPlaying.addEventListener("click", () => {
   containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
 });
 
-// arrow move carousel #8
-prevArrowStories.addEventListener("click", () => {
-  containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
-  containerFadeStories.classList.remove("active");
-});
-nextArrowStories.addEventListener("click", () => {
-  containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
-  containerFadeStories.classList.add("active");
-});
-
 // width items carousel
 let quantity;
 let quantityFade;
 let quantityCatalog;
-let quantityStories;
 
 if (screenWidth <= 540) {
   quantity = 1.5;
   quantityFade = 2;
   quantityCatalog = 3;
-  quantityStories = 1.5;
 } else if (screenWidth <= 980) {
   quantity = 3;
   quantityFade = 3;
   quantityCatalog = 5;
-  quantityStories = 4;
 } else {
   quantity = 3;
   quantityFade = 4;
   quantityCatalog = 6;
-  quantityStories = 5;
 }
 
 let itemWidth = 100 / quantity;
 let itemWidthFade = 100 / quantityFade;
 let itemWidthCatalog = 100 / quantityCatalog;
-let itemWidthStories = 100 / quantityStories;
 
 carouselItem.forEach((item) => {
   if (screenWidth <= 540) {
@@ -542,11 +504,78 @@ carouselItemPlaying.forEach((item) => {
   item.style.width = `calc(${itemWidth}% - 40px)`;
 });
 
+//STORIES CARROUSEL
+const containerCarouselStories = document.querySelector(
+  "#stories .stories_items"
+);
+const carouselItemStories = document.querySelectorAll("#stories .stories_item");
+
+const containerFadeStories = document.querySelector(
+  "#stories .stories_container"
+);
+
+const prevArrowStories = document.querySelector("#stories .carousel_prev");
+const nextArrowStories = document.querySelector("#stories .carousel_next");
+
+containerCarouselStories.addEventListener("touchstart", handleTouchStartStories, false)
+containerCarouselStories.addEventListener("touchmove", handleTouchMoveStories, false)
+
+function handleTouchStartStories(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
+
+function handleTouchMoveStories(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
+    } else {
+      containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
+    }
+
+    initialX = null;
+    initialY = null;
+  }
+}
+
+
+prevArrowStories.addEventListener("click", () => {
+  containerCarouselStories.scrollLeft -= containerCarouselStories.offsetWidth;
+  containerFadeStories.classList.remove("active");
+});
+nextArrowStories.addEventListener("click", () => {
+  containerCarouselStories.scrollLeft += containerCarouselStories.offsetWidth;
+  containerFadeStories.classList.add("active");
+});
+
+let quantityStories;
+
+if (screenWidth <= 540) {
+  quantityStories = 1.5;
+} else if (screenWidth <= 980) {
+  quantityStories = 4;
+} else {
+  quantityStories = 5;
+}
+
+
+let itemWidthStories = 100 / quantityStories;
+
 carouselItemStories.forEach((item) => {
   item.style.width = `calc(${itemWidthStories}% - 20px)`;
 });
 
-// stories open view
+// STORIES VIEW
 const stories = document.querySelectorAll(".stories_item");
 const containerStorie = document.querySelector(".open_storie_container");
 
@@ -765,6 +794,8 @@ stories.forEach((storie) => {
 
     if (screenWidth <= 980) {
       document.documentElement.style.overflow = 'hidden';
+      document.body.scroll = "no"; // IE
+
 
       containerStories.addEventListener("touchstart", () => {
         handleCloseSlideStart;

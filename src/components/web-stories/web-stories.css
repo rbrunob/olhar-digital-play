@@ -552,11 +552,11 @@
     }
 
     .storie_open_prev {
-        width: 150px;
+        width: 80px;
     }
 
     .storie_open_next {
-        width: 150px;
+        width: 80px;
     }
 
     .storie_open_next:hover {
