@@ -257,25 +257,6 @@ containerCarouselPlaying.addEventListener('touchstart', dragStart);
 containerCarouselPlaying.addEventListener('touchend', dragEnd);
 containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
 
-function dragStart(event) {
-  startPosition = getPositionX(event);
-  isDragging = true;
-}
-
-// Fim do arrasto
-function dragEnd(event) {
-  if (isDragging) {
-    const currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
-
-    // Atualize a posição do carrossel com base na diferença
-    carousel.scrollLeft = previousTranslate - diff;
-
-    isDragging = false;
-    previousTranslate -= diff; // Atualiza previousTranslate com a diferença atual
-  }
-}
-
 // Movimento do arrasto
 function drag(event) {
   if (isDragging) {
@@ -283,16 +264,30 @@ function drag(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     carousel.scrollLeft = previousTranslate - diff;
   }
 }
 
-// Obtém a posição X do evento (manipulação de toque ou mouse)
 function getPositionX(event) {
-  return event.type.startsWith('touch') ? event.touches[0].clientX : event.clientX;
+  return event.touches[0].clientX;
 }
 
+function dragStart(event) {
+  startPosition = getPositionX(event)
+  isDragging = true;
+}
+
+function dragEnd(event) {
+  if (isDragging) {
+    const currentPosition = getPositionX(event);
+    const diff = currentPosition - startPosition;
+
+    carousel.scrollLeft = previousTranslate - diff;
+
+    isDragging = false;
+    previousTranslate -= diff
+  }
+}
 
 //drag move carousel #2
 function dragEpsOD(event) {
@@ -300,8 +295,6 @@ function dragEpsOD(event) {
     event.preventDefault();
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
-
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselEpsOD.scrollLeft = previousTranslate - diff;
   }
 }
@@ -313,7 +306,6 @@ function dragEpsOE(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselEpsOE.scrollLeft = previousTranslate - diff;
   }
 }
@@ -325,7 +317,6 @@ function dragVideos(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselVideos.scrollLeft = previousTranslate - diff;
   }
 }
@@ -337,7 +328,6 @@ function dragCatalog(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselCatalog.scrollLeft = previousTranslate - diff;
   }
 }
@@ -349,7 +339,6 @@ function dragFree(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselFree.scrollLeft = previousTranslate - diff;
   }
 }
@@ -362,7 +351,6 @@ function dragPlaying(event) {
     const currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    // Atualize a posição do carrossel com base na diferença
     containerCarouselPlaying.scrollLeft = previousTranslate - diff;
   }
 }
