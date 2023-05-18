@@ -230,161 +230,226 @@ let previousTranslate = 0;
 
 // call functions
 carousel.addEventListener('touchstart', dragStart);
-carousel.addEventListener('touchend', dragEnd);
 carousel.addEventListener('touchmove', drag);
 
-containerCarouselEpsOD.addEventListener('touchstart', dragStart);
-containerCarouselEpsOD.addEventListener('touchend', dragEnd);
+containerCarouselEpsOD.addEventListener('touchstart', dragStartEpsOD);
 containerCarouselEpsOD.addEventListener('touchmove', dragEpsOD);
 
-containerCarouselEpsOE.addEventListener('touchstart', dragStart);
-containerCarouselEpsOE.addEventListener('touchend', dragEnd);
+containerCarouselEpsOE.addEventListener('touchstart', dragStartEpsOE);
 containerCarouselEpsOE.addEventListener('touchmove', dragEpsOE);
 
-containerCarouselVideos.addEventListener('touchstart', dragStart);
-containerCarouselVideos.addEventListener('touchend', dragEnd);
+containerCarouselVideos.addEventListener('touchstart', dragStartVideos);
 containerCarouselVideos.addEventListener('touchmove', dragVideos);
 
-containerCarouselCatalog.addEventListener('touchstart', dragStart);
-containerCarouselCatalog.addEventListener('touchend', dragEnd);
+containerCarouselCatalog.addEventListener('touchstart', dragStartCatalog);
 containerCarouselCatalog.addEventListener('touchmove', dragCatalog);
 
-containerCarouselFree.addEventListener('touchstart', dragStart);
-containerCarouselFree.addEventListener('touchend', dragEnd);
+containerCarouselFree.addEventListener('touchstart', dragStartFree);
 containerCarouselFree.addEventListener('touchmove', dragFree);
 
-containerCarouselPlaying.addEventListener('touchstart', dragStart);
-containerCarouselPlaying.addEventListener('touchend', dragEnd);
+containerCarouselPlaying.addEventListener('touchstart', dragStartPlaying);
 containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
 
-// Movimento do arrasto
-let currentPosition;
-let fullCarousel = document.querySelectorAll('#carouselArrows .carousel_item');
-let carouselSize = fullCarousel[0].clientWidth * fullCarousel.length;
 
 function dragStart(event) {
-  event.preventDefault();
-  startPosition = getPositionX(event)
-  isDragging = true;
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
 }
 
 function drag(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+  if (!initialX || !initialY) {
+    return;
+  }
 
-    if (startPosition < currentPosition) {
-      carousel.scrollLeft -= (startPosition + diff) / 5;
-    } else if (startPosition > currentPosition) {
-      carousel.scrollLeft += (startPosition - diff) / 15;
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      carousel.scrollLeft += carousel.offsetWidth;
+    } else {
+      carousel.scrollLeft -= carousel.offsetWidth;
     }
 
+    initialX = null;
+    initialY = null;
   }
-}
-
-function dragEnd(event) {
-  event.preventDefault();
-  if (isDragging) {
-    isDragging = false;
-    previousTranslate = currentPosition;
-  }
-}
-
-function getPositionX(event) {
-  return event.touches[0].clientX;
 }
 
 //drag move carousel #2
-function dragEpsOD(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartEpsOD(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselEpsOD.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselEpsOD.scrollLeft += (startPosition - diff) / 15;
+function dragEpsOD(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselEpsOD.scrollLeft += containerCarouselEpsOD.offsetWidth;
+    } else {
+      containerCarouselEpsOD.scrollLeft -= containerCarouselEpsOD.offsetWidth;
     }
+
+    initialX = null;
+    initialY = null;
   }
 }
 
 //drag move carousel #3
-function dragEpsOE(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartEpsOE(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselEpsOE.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselEpsOE.scrollLeft += (startPosition - diff) / 15;
+function dragEpsOE(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselEpsOE.scrollLeft += containerCarouselEpsOE.offsetWidth;
+    } else {
+      containerCarouselEpsOE.scrollLeft -= containerCarouselEpsOE.offsetWidth;
     }
+
+    initialX = null;
+    initialY = null;
   }
 }
 
 //drag move carousel #4
-function dragVideos(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartVideos(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselVideos.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselVideos.scrollLeft += (startPosition - diff) / 15;
+function dragVideos(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselVideos.scrollLeft += containerCarouselVideos.offsetWidth;
+    } else {
+      containerCarouselVideos.scrollLeft -= containerCarouselVideos.offsetWidth;
     }
+
+    initialX = null;
+    initialY = null;
   }
 }
 
 //drag move carousel #5
-function dragCatalog(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartCatalog(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselCatalog.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselCatalog.scrollLeft += (startPosition - diff) / 15;
+function dragCatalog(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselCatalog.scrollLeft += containerCarouselCatalog.offsetWidth;
+    } else {
+      containerCarouselCatalog.scrollLeft -= containerCarouselCatalog.offsetWidth;
     }
+
+    initialX = null;
+    initialY = null;
   }
 }
 
 //drag move carousel #6
-function dragFree(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartFree(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselFree.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselFree.scrollLeft += (startPosition - diff) / 15;
+function dragFree(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselFree.scrollLeft += containerCarouselFree.offsetWidth;
+    } else {
+      containerCarouselFree.scrollLeft -= containerCarouselFree.offsetWidth;
     }
 
+    initialX = null;
+    initialY = null;
   }
 }
 
-
 //drag move carousel #7
-function dragPlaying(event) {
-  if (isDragging) {
-    event.preventDefault();
-    currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
+function dragStartPlaying(event) {
+  initialX = event.touches[0].clientX;
+  initialY = event.touches[0].clientY;
+}
 
-    if (startPosition < currentPosition) {
-      containerCarouselPlaying.scrollLeft -= (startPosition - diff) / 5;
-    } else if (startPosition > currentPosition) {
-      containerCarouselPlaying.scrollLeft += (startPosition - diff) / 15;
+function dragPlaying(event) {
+  if (!initialX || !initialY) {
+    return;
+  }
+
+  let currentX = event.touches[0].clientX;
+  let currentY = event.touches[0].clientY;
+
+  let xDiff = initialX - currentX;
+  let yDiff = initialY - currentY;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      containerCarouselPlaying.scrollLeft += containerCarouselPlaying.offsetWidth;
+    } else {
+      containerCarouselPlaying.scrollLeft -= containerCarouselPlaying.offsetWidth;
     }
 
+    initialX = null;
+    initialY = null;
   }
 }
 
@@ -456,48 +521,44 @@ nextArrowPlaying.addEventListener("click", () => {
 let quantity;
 let quantityFade;
 let quantityCatalog;
+let quantityVideo;
 
 if (screenWidth <= 540) {
-  quantity = 1.5;
+  quantity = 2;
   quantityFade = 2;
   quantityCatalog = 3;
+  quantityVideo = 1;
 } else if (screenWidth <= 980) {
   quantity = 3;
   quantityFade = 3;
   quantityCatalog = 5;
+  quantityVideo = 3;
 } else {
   quantity = 3;
+  quantityVideo = 3;
   quantityFade = 4;
   quantityCatalog = 6;
 }
 
 let itemWidth = 100 / quantity;
+let itemWidthVideo = 100 / quantityVideo;
 let itemWidthFade = 100 / quantityFade;
 let itemWidthCatalog = 100 / quantityCatalog;
 
 carouselItem.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidth}%)`;
-  }
-  item.style.width = `calc(${itemWidth}% - 40px)`;
+  item.style.width = `calc(${itemWidth}% - 20px)`;
 });
 
 carouselItemEpsOD.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidthFade}%)`;
-  }
-  item.style.width = `calc(${itemWidthFade}% - 40px)`;
+  item.style.width = `calc(${itemWidthFade}% - 20px)`;
 })
 
 carouselItemEpsOE.forEach((item) => {
-  if (screenWidth <= 540) {
-    item.style.width = `calc(${itemWidthFade}%)`;
-  }
-  item.style.width = `calc(${itemWidthFade}% - 40px)`;
+  item.style.width = `calc(${itemWidthFade}% - 20px)`;
 });
 
 carouselItemVideos.forEach((item) => {
-  item.style.width = `calc(${itemWidth}%)`;
+  item.style.width = `calc(${itemWidthVideo}% - 20px)`;
 });
 
 carouselItemCatalog.forEach((item) => {
@@ -505,11 +566,11 @@ carouselItemCatalog.forEach((item) => {
 });
 
 carouselItemFree.forEach((item) => {
-  item.style.width = `calc(${itemWidth}% - 40px)`;
+  item.style.width = `calc(${itemWidth}% - 20px)`;
 });
 
 carouselItemPlaying.forEach((item) => {
-  item.style.width = `calc(${itemWidth}% - 40px)`;
+  item.style.width = `calc(${itemWidth}% - 20px)`;
 });
 
 //STORIES CARROUSEL
@@ -569,7 +630,7 @@ nextArrowStories.addEventListener("click", () => {
 let quantityStories;
 
 if (screenWidth <= 540) {
-  quantityStories = 1.5;
+  quantityStories = 2;
 } else if (screenWidth <= 980) {
   quantityStories = 4;
 } else {
@@ -593,20 +654,57 @@ stories.forEach((storie) => {
   const nameImage = imageStorie[imageStorie.length - 1];
   const titleStorie = storie.lastElementChild.firstElementChild.innerText;
 
-  let storiesContent;
-
-  storiesContent = {
-    id: indexStorie,
-    image: nameImage,
-    title: titleStorie,
-  };
-
   storie.addEventListener("click", () => {
+
     containerStorie.classList.add("hidden");
 
     setTimeout(() => {
       containerStorie.classList.add("active");
     }, 200);
+
+    let storiesContent;
+
+    storiesContent = {
+      id: indexStorie,
+      image: [
+        nameImage,
+        'web_stories_mumia.webp',
+        'web_stories_carros_blindados.webp'
+      ],
+      title: [
+        titleStorie,
+        'Múmia coberta de ouro encontrada no Egito',
+        'Carro blindado ou tanque? Conheça a Vengeance'
+      ]
+    };
+
+    async function loadJSON() {
+      const response = await fetch('https://preprod.canalmarkket.com.br/olhar-digital-play/src/data/stories.json');
+      let data = await response.text();
+      const json = JSON.parse(data);
+      
+      console.log(json);
+    }
+
+    loadJSON();
+
+    let formatDotsSlides = '';
+
+    for (i = 0; i < storiesContent.image.length; i++) {
+      formatDotsSlides += `<div class="dot_progress" data-index=${[i]}><div class="progress_active"></div></div>`;
+    }
+
+    let formatImageSlides = '';
+
+    for (i = 0; i < storiesContent.image.length; i++) {
+      formatImageSlides += ` <div class="image" data-index=${[i]}><img src='./src/assets/images/${storiesContent.image[i]}'/></div>`;
+    }
+
+    let formatText = '';
+
+    for (i = 0; i < storiesContent.title.length; i++) {
+      formatText += `<p data-index=${[i]}>${storiesContent.title[i]}</p>`;
+    }
 
     containerStorie.innerHTML = `
       <div class="close"></div>
@@ -615,15 +713,7 @@ stories.forEach((storie) => {
         data-index="${storiesContent.id}"
       >
         <div class="images_carousel">
-          <div class="image" data-index="0"> 
-            <img src='./src/assets/images/${storiesContent.image}'  />
-          </div> 
-          <div class="image" data-index="1"> 
-            <img src='./src/assets/images/web_stories_mumia.webp'  />
-          </div>
-          <div class="image" data-index="2"> 
-            <img src='./src/assets/images/web_stories_carros_blindados.webp' />
-          </div>
+          ${formatImageSlides}
         </div>
         <div class="storie_open_prev">
           <svg width="34" height="60" viewBox="0 0 34 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -631,16 +721,8 @@ stories.forEach((storie) => {
           </svg>
         </div>
         <div class="progress_bar">
-            <div class="dot_progress" data-index="0">
-              <div class="progress_active"></div>
-            </div>
-            <div class="dot_progress" data-index="1">
-              <div class="progress_active"></div>
-            </div>
-            <div class="dot_progress" data-index="2">
-              <div class="progress_active"></div>
-            </div>
-          </div>
+          ${formatDotsSlides}
+        </div>
         <div class="storie_open_functions">
             <div class="play_pause">
             </div>
@@ -652,9 +734,7 @@ stories.forEach((storie) => {
           </div>
         <div class="storie_open_row">
           <div class="stories_texts">
-            <p data-index="0">${storiesContent.title}</p>
-            <p data-index="1">texto 2</p>
-            <p data-index="2">texto 3</p>
+            ${formatText}
           </div> 
         </div>
         <div class="storie_open_next">

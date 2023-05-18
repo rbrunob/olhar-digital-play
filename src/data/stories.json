@@ -1,0 +1,17 @@
+{
+    "storieContents": [
+        {
+            "id": "0",
+            "images": [
+                "nameImage",
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp"
+            ],
+            "titles": [
+                "titleStorie",
+                "Múmia coberta de ouro encontrada no Egito",
+                "Carro blindado ou tanque? Conheça a Vengeance"
+            ]
+        }
+    ]
+}

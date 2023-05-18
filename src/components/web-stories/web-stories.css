@@ -114,7 +114,7 @@
 
 .stories_items .stories_item {
     flex-shrink: 0;
-    margin: 0 15px;
+    margin: 0 10px;
     display: flex;
     width: calc(100% / 5 - 20px);
     flex-direction: column;

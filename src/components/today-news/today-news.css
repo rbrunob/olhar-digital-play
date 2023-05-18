@@ -89,7 +89,7 @@
 
 .carousel_item {
     flex-shrink: 0;
-    margin: 0 20px;
+    margin: 0 10px;
     display: flex;
     width: 30.9%;
     flex-direction: column;
