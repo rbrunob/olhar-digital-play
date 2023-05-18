@@ -3,12 +3,12 @@
         {
             "id": "0",
             "images": [
-                "nameImage",
+                "web_stories_veja_o_traje.webp",
                 "web_stories_mumia.webp",
                 "web_stories_carros_blindados.webp"
             ],
             "titles": [
-                "titleStorie",
+                "Veja o traje que os astronautas da NASA vão usar no retorno à Lua",
                 "Múmia coberta de ouro encontrada no Egito",
                 "Carro blindado ou tanque? Conheça a Vengeance"
             ]

@@ -645,16 +645,21 @@ carouselItemStories.forEach((item) => {
 });
 
 // STORIES VIEW
+// async
+const contentsStories = async () => {
+  const response = await fetch('https://preprod.canalmarkket.com.br/olhar-digital-play/src/data/stories.json');
+  const data = await response.text();
+  const dataItem = JSON.parse(data);
+  return dataItem;
+}
+
 const stories = document.querySelectorAll(".stories_item");
 const containerStorie = document.querySelector(".open_storie_container");
 
 stories.forEach((storie) => {
-  const indexStorie = storie.getAttribute("data-index");
-  const imageStorie = storie.firstElementChild.getAttribute("src").split("/");
-  const nameImage = imageStorie[imageStorie.length - 1];
-  const titleStorie = storie.lastElementChild.firstElementChild.innerText;
-
-  storie.addEventListener("click", () => {
+  storie.addEventListener("click", async () => {
+    const dataItem = await contentsStories();
+    const storieContents = dataItem.storieContents[0]
 
     containerStorie.classList.add("hidden");
 
@@ -662,55 +667,29 @@ stories.forEach((storie) => {
       containerStorie.classList.add("active");
     }, 200);
 
-    let storiesContent;
-
-    storiesContent = {
-      id: indexStorie,
-      image: [
-        nameImage,
-        'web_stories_mumia.webp',
-        'web_stories_carros_blindados.webp'
-      ],
-      title: [
-        titleStorie,
-        'Múmia coberta de ouro encontrada no Egito',
-        'Carro blindado ou tanque? Conheça a Vengeance'
-      ]
-    };
-
-    async function loadJSON() {
-      const response = await fetch('https://preprod.canalmarkket.com.br/olhar-digital-play/src/data/stories.json');
-      let data = await response.text();
-      const json = JSON.parse(data);
-      
-      console.log(json);
-    }
-
-    loadJSON();
-
     let formatDotsSlides = '';
 
-    for (i = 0; i < storiesContent.image.length; i++) {
+    for (i = 0; i < storieContents.images.length; i++) {
       formatDotsSlides += `<div class="dot_progress" data-index=${[i]}><div class="progress_active"></div></div>`;
     }
 
     let formatImageSlides = '';
 
-    for (i = 0; i < storiesContent.image.length; i++) {
-      formatImageSlides += ` <div class="image" data-index=${[i]}><img src='./src/assets/images/${storiesContent.image[i]}'/></div>`;
+    for (i = 0; i < storieContents.images.length; i++) {
+      formatImageSlides += ` <div class="image" data-index=${[i]}><img src='./src/assets/images/${storieContents.images[i]}'/></div>`;
     }
 
     let formatText = '';
 
-    for (i = 0; i < storiesContent.title.length; i++) {
-      formatText += `<p data-index=${[i]}>${storiesContent.title[i]}</p>`;
+    for (i = 0; i < storieContents.titles.length; i++) {
+      formatText += `<p data-index=${[i]}>${storieContents.titles[i]}</p>`;
     }
 
     containerStorie.innerHTML = `
       <div class="close"></div>
       <div 
         class="storie_open" 
-        data-index="${storiesContent.id}"
+        data-index="${storieContents.id}"
       >
         <div class="images_carousel">
           ${formatImageSlides}
