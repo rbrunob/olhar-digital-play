@@ -67,6 +67,7 @@ header .header_row .container_logo .logo {
     font-size: var(--text-sm);
     font-weight: var(--font-light);
     transition: .15s;
+    text-transform: uppercase;
 }
 
 .container_button_search {

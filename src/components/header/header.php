@@ -13,11 +13,8 @@
         <nav class="desktop">
             <ul class="container_nav_menu">
                 <li class="nav_item"><a href="noticias.php">NOTÍCIAS</a></li>
-                <li class="nav_item"><a href="videos.php">VÍDEOS</a></li>
-                <li class="nav_item"><a href="editoriais.php">EDITORIAIS</a></li>
-                <li class="nav_item"><a href="suporte.php">SUPORTE</a></li>
-                <li class="nav_item"><a href="odseguranca.php">OD SEGURANÇA</a></li>
-                <li class="nav_item"><a href="ofertas.php">OFERTAS</a></li>
+                <li class="nav_item"><a href="index.php#videosNews">VÍDEOS</a></li>
+                <li class="nav_item"><a href="olhar-digital-play.com">Olhar Digital Play</a></li>
             </ul>
             <div class="container_button_search">
                 <button class="button_search">

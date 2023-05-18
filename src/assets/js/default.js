@@ -258,13 +258,36 @@ containerCarouselPlaying.addEventListener('touchend', dragEnd);
 containerCarouselPlaying.addEventListener('touchmove', dragPlaying);
 
 // Movimento do arrasto
+let currentPosition;
+let fullCarousel = document.querySelectorAll('#carouselArrows .carousel_item');
+let carouselSize = fullCarousel[0].clientWidth * fullCarousel.length;
+
+function dragStart(event) {
+  event.preventDefault();
+  startPosition = getPositionX(event)
+  isDragging = true;
+}
+
 function drag(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    carousel.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      carousel.scrollLeft -= (startPosition + diff) / 5;
+    } else if (startPosition > currentPosition) {
+      carousel.scrollLeft += (startPosition - diff) / 15;
+    }
+
+  }
+}
+
+function dragEnd(event) {
+  event.preventDefault();
+  if (isDragging) {
+    isDragging = false;
+    previousTranslate = currentPosition;
   }
 }
 
@@ -272,30 +295,18 @@ function getPositionX(event) {
   return event.touches[0].clientX;
 }
 
-function dragStart(event) {
-  startPosition = getPositionX(event)
-  isDragging = true;
-}
-
-function dragEnd(event) {
-  if (isDragging) {
-    const currentPosition = getPositionX(event);
-    const diff = currentPosition - startPosition;
-
-    carousel.scrollLeft = previousTranslate - diff;
-
-    isDragging = false;
-    previousTranslate -= diff
-  }
-}
-
 //drag move carousel #2
 function dragEpsOD(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
-    containerCarouselEpsOD.scrollLeft = previousTranslate - diff;
+
+    if (startPosition < currentPosition) {
+      containerCarouselEpsOD.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselEpsOD.scrollLeft += (startPosition - diff) / 15;
+    }
   }
 }
 
@@ -303,10 +314,14 @@ function dragEpsOD(event) {
 function dragEpsOE(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    containerCarouselEpsOE.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      containerCarouselEpsOE.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselEpsOE.scrollLeft += (startPosition - diff) / 15;
+    }
   }
 }
 
@@ -314,10 +329,14 @@ function dragEpsOE(event) {
 function dragVideos(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    containerCarouselVideos.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      containerCarouselVideos.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselVideos.scrollLeft += (startPosition - diff) / 15;
+    }
   }
 }
 
@@ -325,10 +344,14 @@ function dragVideos(event) {
 function dragCatalog(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    containerCarouselCatalog.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      containerCarouselCatalog.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselCatalog.scrollLeft += (startPosition - diff) / 15;
+    }
   }
 }
 
@@ -336,10 +359,15 @@ function dragCatalog(event) {
 function dragFree(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    containerCarouselFree.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      containerCarouselFree.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselFree.scrollLeft += (startPosition - diff) / 15;
+    }
+
   }
 }
 
@@ -348,10 +376,15 @@ function dragFree(event) {
 function dragPlaying(event) {
   if (isDragging) {
     event.preventDefault();
-    const currentPosition = getPositionX(event);
+    currentPosition = getPositionX(event);
     const diff = currentPosition - startPosition;
 
-    containerCarouselPlaying.scrollLeft = previousTranslate - diff;
+    if (startPosition < currentPosition) {
+      containerCarouselPlaying.scrollLeft -= (startPosition - diff) / 5;
+    } else if (startPosition > currentPosition) {
+      containerCarouselPlaying.scrollLeft += (startPosition - diff) / 15;
+    }
+
   }
 }
 
