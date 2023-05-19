@@ -12,6 +12,85 @@
                 "Múmia coberta de ouro encontrada no Egito",
                 "Carro blindado ou tanque? Conheça a Vengeance"
             ]
+        },
+        {
+            "id": "1",
+            "images": [
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp",
+                "web_stories_veja_o_traje.webp",
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp",
+                "web_stories_veja_o_traje.webp"
+            ],
+            "titles": [
+                "Múmia coberta de ouro encontrada no Egito",
+                "Carro blindado ou tanque? Conheça a Vengeance",
+                "Veja o traje que os astronautas da NASA vão usar no retorno à Lua",
+                "",
+                "",
+                "Veja o traje que os astronautas da NASA vão usar no retorno à Lua"
+            ]
+        },
+        {
+            "id": "2",
+            "images": [
+                "web_stories_carros_blindados.webp",
+                "web_stories_mumia.webp",
+                "web_stories_veja_o_traje.webp",
+                "web_stories_carros_blindados.webp"
+            ],
+            "titles": [
+                "Múmia coberta de ouro encontrada no Egito",
+                "",
+                "Carro blindado ou tanque? Conheça a Vengeance",
+                ""
+            ]
+        },
+        {
+            "id": "3",
+            "images": [
+                "web_stories_carros_blindados.webp",
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp",
+                "web_stories_veja_o_traje.webp"
+            ],
+            "titles": [
+                "Múmia coberta de ouro encontrada no Egito",
+                "Carro blindado ou tanque? Conheça a Vengeance",
+                "",
+                ""
+            ]
+        },
+        {
+            "id": "4",
+            "images": [
+                "web_stories_carros_blindados.webp",
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp",
+                "web_stories_veja_o_traje.webp"
+            ],
+            "titles": [
+                "Múmia coberta de ouro encontrada no Egito",
+                "Carro blindado ou tanque? Conheça a Vengeance",
+                "",
+                ""
+            ]
+        },
+        {
+            "id": "5",
+            "images": [
+                "web_stories_carros_blindados.webp",
+                "web_stories_mumia.webp",
+                "web_stories_carros_blindados.webp",
+                "web_stories_veja_o_traje.webp"
+            ],
+            "titles": [
+                "Múmia coberta de ouro encontrada no Egito",
+                "Carro blindado ou tanque? Conheça a Vengeance",
+                "",
+                ""
+            ]
         }
     ]
 }

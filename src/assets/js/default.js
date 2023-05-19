@@ -650,6 +650,7 @@ const contentsStories = async () => {
   const response = await fetch('https://preprod.canalmarkket.com.br/olhar-digital-play/src/data/stories.json');
   const data = await response.text();
   const dataItem = JSON.parse(data);
+  console.log(dataItem)
   return dataItem;
 }
 
@@ -658,8 +659,9 @@ const containerStorie = document.querySelector(".open_storie_container");
 
 stories.forEach((storie) => {
   storie.addEventListener("click", async () => {
+    let indexStories = storie.getAttribute('data-index');
     const dataItem = await contentsStories();
-    const storieContents = dataItem.storieContents[0]
+    const storieContents = dataItem.storieContents[indexStories];
 
     containerStorie.classList.add("hidden");
 
