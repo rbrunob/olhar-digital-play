@@ -741,6 +741,8 @@ stories.forEach((storie) => {
     const containerStories = document.querySelector(".storie_open_row");
     const resetArea = document.querySelector(".reset");
     const modalStorieContainer = document.querySelector(".storie_open");
+    const nextStorie = document.querySelector(".storie_open_next");
+    const prevStorie = document.querySelector(".storie_open_prev");
 
     // default variables
     let currentProgressIndex = 0;
@@ -860,9 +862,13 @@ stories.forEach((storie) => {
       if (isPause == false) {
         isPause = true
         pauseStorie.classList.add("active");
+        prevStorie.style.display = "none"
+        nextStorie.style.display = "none"
       } else {
         isPause = false
         pauseStorie.classList.remove("active");
+        prevStorie.style.display = "flex"
+        nextStorie.style.display = "flex"
       }
     })
 
@@ -880,6 +886,8 @@ stories.forEach((storie) => {
       containerStories.addEventListener("touchend", () => {
         isPause = false;
         pauseStorie.classList.remove("active");
+        prevStorie.style.display = "flex"
+        nextStorie.style.display = "flex"
       }, false)
 
       containerStories.addEventListener("touchmove", handleCloseSlide, false);
@@ -925,6 +933,8 @@ stories.forEach((storie) => {
       containerStories.addEventListener("mouseup", () => {
         isPause = false;
         pauseStorie.classList.remove("active");
+        prevStorie.style.display = "flex"
+        nextStorie.style.display = "flex"
       })
     }
 
@@ -943,7 +953,6 @@ stories.forEach((storie) => {
     secundaryClose.addEventListener("click", closeSlides);
 
     // next button
-    const nextStorie = document.querySelector(".storie_open_next");
     nextStorie.addEventListener("click", () => {
       if (currentProgressIndex < dotsStories.length) {
         currentProgress = 100;
@@ -963,7 +972,6 @@ stories.forEach((storie) => {
     });
 
     // previous button
-    const prevStorie = document.querySelector(".storie_open_prev");
     prevStorie.addEventListener("click", () => {
       if (0 < currentProgressIndex < dotsStories.length) {
         currentProgress = 0;
