@@ -645,12 +645,11 @@ carouselItemStories.forEach((item) => {
 });
 
 // STORIES VIEW
-// async
+// get stories contents
 const contentsStories = async () => {
   const response = await fetch('https://preprod.canalmarkket.com.br/olhar-digital-play/src/data/stories.json');
   const data = await response.text();
   const dataItem = JSON.parse(data);
-  console.log(dataItem)
   return dataItem;
 }
 
@@ -659,16 +658,20 @@ const containerStorie = document.querySelector(".open_storie_container");
 
 stories.forEach((storie) => {
   storie.addEventListener("click", async () => {
+    // get storie index
     let indexStories = storie.getAttribute('data-index');
     const dataItem = await contentsStories();
-    const storieContents = dataItem.storieContents[indexStories];
+    const storieContents = dataItem.storieContents[indexStories]; // search for object in arrray w/ the same index number
 
+    // set timeout for slide animation
     containerStorie.classList.add("hidden");
 
     setTimeout(() => {
       containerStorie.classList.add("active");
     }, 200);
 
+    // set slide contents for each text, image and dots
+    // increment one after the other 
     let formatDotsSlides = '';
 
     for (i = 0; i < storieContents.images.length; i++) {
@@ -687,6 +690,7 @@ stories.forEach((storie) => {
       formatText += `<p data-index=${[i]}>${storieContents.titles[i]}</p>`;
     }
 
+    // create slide element
     containerStorie.innerHTML = `
       <div class="close"></div>
       <div 
@@ -727,10 +731,8 @@ stories.forEach((storie) => {
       </div>
     `;
 
-    // ANIMAÇÃO DOS DOTS
-
-    //consts
-    const dotsStories = document.querySelectorAll(".dot_progress"); //progressBarElements
+    // consts
+    const dotsStories = document.querySelectorAll(".dot_progress"); // progressBarElements
     const pauseStorie = document.querySelector(".play_pause");
     const closeButton = document.querySelector(".close");
     const secundaryClose = document.querySelector(".close_button");
@@ -745,7 +747,7 @@ stories.forEach((storie) => {
     let currentProgress = 0;
     let currentImage = 0;
     let currentText = 0;
-    let timeAnimation = 5000; //storyDuration
+    let timeAnimation = 5000; // storyDuration
     let isPause = false;
 
     const interval = 10;
@@ -755,7 +757,7 @@ stories.forEach((storie) => {
       if (currentProgressIndex < dotsStories.length) {
         if (currentProgress >= 100 && isPause == false) {
           clearInterval(intervalId);
-          currentProgressIndex++;
+          currentProgressIndex++; // sum one more to the dots index number and star dots animation again 
 
           if (currentProgressIndex >= dotsStories.length) {
             clearInterval(intervalId);
@@ -779,6 +781,7 @@ stories.forEach((storie) => {
             `;
             const resetButton = document.querySelector(".reset_button");
             resetButton.addEventListener("click", () => {
+              // reset all
               pauseStorie.classList.remove("active");
               pauseStorie.style.display = "block";
 
@@ -807,12 +810,12 @@ stories.forEach((storie) => {
               clearInterval(intervalId)
             })
           }
-          currentProgress = 0;
+          currentProgress = 0; // animation 
           return;
         } else if (isPause == false) {
-          currentProgress += increment;
+          currentProgress += increment; // animation 
         } else if (isPause == true) {
-          clearInterval(intervalId)
+          clearInterval(intervalId) // stop animation
         }
         dotsStories[currentProgressIndex].querySelector('.progress_active').style.width = `${currentProgress}%`;
       }
@@ -820,6 +823,7 @@ stories.forEach((storie) => {
 
     intervalId()
 
+    // remove last whenever have a new image
     const updateImage = () => setInterval(() => {
       if (currentProgressIndex < dotsStories.length) {
         imageStories[currentImage].classList.add("active");
@@ -835,6 +839,7 @@ stories.forEach((storie) => {
 
     updateImage();
 
+    // remove last whenever have a new text
     const updateText = () => setInterval(() => {
       if (currentProgressIndex < dotsStories.length) {
         textStories[currentText].classList.add("active");
@@ -863,9 +868,9 @@ stories.forEach((storie) => {
 
     if (screenWidth <= 980) {
       document.documentElement.style.overflow = 'hidden';
-      document.body.scroll = "no"; // IE
+      document.body.scroll = "no"; // internet explorer
 
-
+      // touch events
       containerStories.addEventListener("touchstart", () => {
         handleCloseSlideStart;
         isPause = true;
@@ -895,6 +900,7 @@ stories.forEach((storie) => {
         let xDiff = initialX - currentX;
         let yDiff = initialY - currentY;
 
+        // bounce close animation
         if (Math.abs(yDiff) > Math.abs(xDiff)) {
           if (yDiff > 0) {
             modalStorieContainer.classList.add("bounce_up");
@@ -910,6 +916,7 @@ stories.forEach((storie) => {
       }
 
     } else {
+      // mouse events
       containerStories.addEventListener("mousedown", () => {
         isPause = true;
         pauseStorie.classList.add("active");
@@ -935,7 +942,7 @@ stories.forEach((storie) => {
     closeButton.addEventListener("click", closeSlides);
     secundaryClose.addEventListener("click", closeSlides);
 
-    // BOTÃO NEXT
+    // next button
     const nextStorie = document.querySelector(".storie_open_next");
     nextStorie.addEventListener("click", () => {
       if (currentProgressIndex < dotsStories.length) {
@@ -955,7 +962,7 @@ stories.forEach((storie) => {
       }
     });
 
-    // BOTÃO ANTERIOR
+    // previous button
     const prevStorie = document.querySelector(".storie_open_prev");
     prevStorie.addEventListener("click", () => {
       if (0 < currentProgressIndex < dotsStories.length) {
