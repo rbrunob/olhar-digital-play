@@ -28,6 +28,7 @@
         <? include("./src/components/free-channels/free-channels.php") ?>
         <? include("./src/components/movies-playing/movies-playing.php") ?>
         <? include("./src/components/categories/categories.php") ?>
+        <div id="toPlataformPopUp"></div>
     </main>
 
     <? include("./src/components/newsletters/newsletters.php") ?>

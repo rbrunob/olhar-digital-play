@@ -151,9 +151,9 @@
 #catalog .container_carousel_posters::after {
     position: absolute;
     content: '';
-    width: 100%;
+    width: 10%;
     height: 100%;
-    background-image: linear-gradient(270deg, #e2e2e2 2%, transparent 20%);
+    background-image: linear-gradient(270deg, #e2e2e2 2%, transparent 100%);
     display: block;
     right: 0;
     transition: all .3s;
@@ -168,7 +168,7 @@
     content: '';
     width: 0%;
     height: 100%;
-    background-image: linear-gradient(90deg, #e2e2e2 2%, transparent 20%);
+    background-image: linear-gradient(90deg, #e2e2e2 2%, transparent 100%);
     display: block;
     z-index: 1;
     left: 0;
@@ -176,7 +176,7 @@
 }
 
 #catalog .container_carousel_posters.active::before {
-    width: 100%;
+    width: 10%;
 }
 
 @media screen and (max-width: 540px) {

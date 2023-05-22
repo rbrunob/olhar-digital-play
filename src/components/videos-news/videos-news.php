@@ -10,7 +10,7 @@
 
             <div class="carousel_content">
 
-                <div class="carousel_item">
+                <div class="carousel_item" onclick="openPopUp()">
                     <div class="item_image">
                         <div class="image_category">Pro</div>
                         <img src="./src/assets/images/video_news_big_tech.webp" alt="Big Tech" />

@@ -998,3 +998,42 @@ stories.forEach((storie) => {
     });
   });
 });
+
+const popUp = document.querySelector('#toPlataformPopUp');
+
+function openPopUp() {
+  popUp.classList.add("hidden");
+
+  setTimeout(() => {
+    popUp.classList.add("active");
+  }, 200);
+
+  popUp.innerHTML = `
+    <div class="close"></div>
+    <div class="popup_row">
+      <div class="close_button"></div>
+      <div class="text">
+        <p>PARA ACESSAR  ESTE CONTEÚDO, FAÇA LOGIN OU FAÇA SEU CADASTRO GRATUITAMENTE</p>
+      </div>
+      <div class="confirm_container">
+        <a href="teste.php" class="button" target="_blank">
+          <span>ok! </span>
+          <svg width="35" height="29" viewBox="0 0 35 29" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.6667 29L0 17.1376L5.18804 11.8625L11.6667 18.4684L29.812 0L35 5.2751L11.6667 29Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  `;
+
+  const closeButton = document.querySelector('.close');
+  const handleClose = () => {
+    popUp.classList.remove("active");
+
+    setTimeout(() => {
+      popUp.classList.remove("hidden");
+    }, 200);
+  }
+  closeButton.addEventListener('click', handleClose)
+
+}

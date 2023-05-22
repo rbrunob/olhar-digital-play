@@ -10,7 +10,7 @@
 
             <div class="carousel_content">
 
-                <div class="carousel_item">
+                <div class="carousel_item" onclick="openPopUp()">
                     <div class="item_image">
                         <img src="./src/assets/images/epOE_01.webp" alt="01" />
                     </div>

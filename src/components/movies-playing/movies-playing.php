@@ -21,7 +21,7 @@
                         </p>
                     </div>
                     <div class="item_button">
-                        <a class="button" href="assista-agora">Assista Agora</a>
+                        <a class="button" onclick="openPopUp()">Assista Agora</a>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                         </p>
                     </div>
                     <div class="item_button">
-                        <a class="button" href="assista-agora">Assista Agora</a>
+                        <a class="button" onclick="openPopUp()">Assista Agora</a>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                         </p>
                     </div>
                     <div class="item_button">
-                        <a class="button" href="assista-agora">Assista Agora</a>
+                        <a class="button" onclick="openPopUp()">Assista Agora</a>
                     </div>
                 </div>
             </div>

@@ -89,9 +89,9 @@
 #videosNews .carousel_container::after {
     position: absolute;
     content: '';
-    width: 100%;
+    width: 10%;
     height: 100%;
-    background-image: linear-gradient(270deg, white 2%, transparent 20%);
+    background-image: linear-gradient(270deg, white 2%, transparent 100%);
     display: block;
     right: 0;
     z-index: 2;
@@ -107,7 +107,7 @@
     content: '';
     width: 0%;
     height: 100%;
-    background-image: linear-gradient(90deg, white 2%, transparent 20%);
+    background-image: linear-gradient(90deg, white 2%, transparent 100%);
     display: block;
     z-index: 2;
     left: 0;
@@ -115,7 +115,7 @@
 }
 
 #videosNews .carousel_container.active::before {
-    width: 100%;
+    width: 10%;
 }
 
 section#videosNews {
