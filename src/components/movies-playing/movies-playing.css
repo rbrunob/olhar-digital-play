@@ -69,6 +69,11 @@
     color: var(--text-green-400);
 }
 
+#moviesPlaying .carousel_item:active .item_button .button {
+    background: white;
+    color: var(--text-green-400);
+}
+
 
 @media screen and (max-width: 540px) {
     #moviesPlaying .carousel_next {

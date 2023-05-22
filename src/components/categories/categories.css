@@ -78,6 +78,7 @@
     font-size: var(--text-sm);
     font-weight: var(--font-light);
     transition: var(--duration-025);
+    cursor: pointer;
     color: var(--text-white);
 }
 

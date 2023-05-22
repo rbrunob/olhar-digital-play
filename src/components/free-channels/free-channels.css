@@ -49,6 +49,31 @@
     left: 0;
 }
 
+.hover_play {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    background: #00000057;
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.hover_play svg {
+    fill: white;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 10px black);
+}
+
+.item_image .hover_play:hover {
+    opacity: 1;
+}
+
 @media screen and (max-width: 540px) {
     .carousel_title {
         justify-content: center;
