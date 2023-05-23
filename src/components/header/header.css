@@ -261,6 +261,12 @@ header .header_row .container_logo .logo {
     transition: all var(--duration-025);
 }
 
+@media screen and (max-width: 1280px) {
+    .container_social_media {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     header .header_row nav.desktop {
         display: none;

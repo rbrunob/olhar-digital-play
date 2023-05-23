@@ -91,7 +91,7 @@
     border: none;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     #newslatters {
         display: none;
     }

@@ -74,7 +74,7 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     .carousel_title {
         justify-content: center;
         width: 90%;
@@ -87,7 +87,7 @@
 
     .carousel-row {
         width: var(--mw-100);
-        padding: 10% 0;
+        padding: 5% 0;
     }
 
     #freeChannel .carousel_container .carousel_prev {
@@ -96,5 +96,12 @@
 
     #freeChannel .carousel_container .carousel_next {
         display: none;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .carousel-row {
+        width: var(--mw-100);
+        padding: 10% 0;
     }
 }

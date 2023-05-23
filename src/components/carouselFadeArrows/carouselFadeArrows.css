@@ -103,7 +103,7 @@ section#carouselFadeArrows {
     max-width: 1920px;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     #carouselFadeArrows .carousel_container .carousel_next {
         display: none;
     }

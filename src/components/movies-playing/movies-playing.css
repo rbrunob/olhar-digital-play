@@ -75,7 +75,7 @@
 }
 
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     #moviesPlaying .carousel_next {
         display: none;
     }

@@ -528,6 +528,11 @@ if (screenWidth <= 540) {
   quantityFade = 2;
   quantityCatalog = 3;
   quantityVideo = 1;
+} else if (screenWidth <= 680) {
+  quantity = 2.5;
+  quantityFade = 2.5;
+  quantityCatalog = 4;
+  quantityVideo = 2;
 } else if (screenWidth <= 980) {
   quantity = 3;
   quantityFade = 3;
@@ -631,6 +636,8 @@ let quantityStories;
 
 if (screenWidth <= 540) {
   quantityStories = 2;
+} else if (screenWidth <= 680) {
+  quantityStories = 3
 } else if (screenWidth <= 980) {
   quantityStories = 4;
 } else {

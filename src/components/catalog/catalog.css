@@ -179,7 +179,7 @@
     width: 10%;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     #catalog .catalog_row {
         width: var(--mw-100);
         padding: 10% 0;

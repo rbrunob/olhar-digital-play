@@ -136,7 +136,7 @@ footer .footer_row .container h4 {
     display: none;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     footer .footer_row {
         width: var(--mw-90);
     }

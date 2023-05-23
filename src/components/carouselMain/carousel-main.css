@@ -121,6 +121,7 @@
 #carouselMain .carousel_actions .carousel_dots .dot {
     width: 12px;
     height: 12px;
+    transition: all .25s;
     border-radius: 50%;
     background-color: var(--bg-gray-200);
     cursor: pointer;
@@ -128,6 +129,8 @@
 
 #carouselMain .carousel_actions .carousel_dots .dot.active {
     background-color: var(--bg-green-100);
+    box-shadow: 0 0 0 var(--bg-green-100);
+    transition: all .25s;
 }
 
 #carouselMain .carousel_actions .carousel_prev {
@@ -146,14 +149,157 @@
     height: 20px;
 }
 
+#carouselMain .carousel_actions .carousel_next img:hover {
+    filter: brightness(0.5);
+}
+
+#carouselMain .carousel_actions .carousel_prev img:hover {
+    filter: brightness(0.5);
+}
+
+#carouselMain .carousel_actions .carousel_dots .dot:hover {
+    background-color: var(--bg-gray-400);
+}
+
+#carouselMain .carousel_actions .carousel_dots .dot.active:hover {
+    background-color: var(--bg-green-100);
+    box-shadow: 0 0 10px var(--bg-green-100);
+}
+
+@media screen and (max-width: 1080px) {
+
+    #carouselMain .carousel_slides .carousel_item {
+        max-width: 650px;
+    }
+
+    #carouselMain .carousel_item.item-0 {
+        transform: translateX(0%) scale(.8);
+    }
+
+    #carouselMain .carousel_item.item-1 {
+        transform: translateX(10%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-2 {
+        transform: translateX(22%) scale(1);
+    }
+
+    #carouselMain .carousel_item.item-3 {
+        transform: translateX(35%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-4 {
+        transform: translateX(45%) scale(.8);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #carouselMain .carousel_slides {
+        height: 340px;
+    }
+
+    #carouselMain .carousel_slides .carousel_item {
+        max-width: 550px;
+    }
+
+    #carouselMain .carousel_item.item-0 {
+        transform: translateX(0%) scale(.8);
+    }
+
+    #carouselMain .carousel_item.item-1 {
+        transform: translateX(10%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-2 {
+        transform: translateX(30%) scale(1);
+    }
+
+    #carouselMain .carousel_item.item-3 {
+        transform: translateX(50%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-4 {
+        transform: translateX(60%) scale(.8);
+    }
+}
+
+@media screen and (max-width: 780px) {
+    #carouselMain .carousel_slides {
+        height: 320px;
+    }
+
+    #carouselMain .carousel_slides .carousel_item {
+        max-width: 500px;
+    }
+
+    #carouselMain .carousel_item.item-0 {
+        transform: translateX(0%) scale(.8);
+    }
+
+    #carouselMain .carousel_item.item-1 {
+        transform: translateX(8%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-2 {
+        transform: translateX(20%) scale(1);
+    }
+
+    #carouselMain .carousel_item.item-3 {
+        transform: translateX(33%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-4 {
+        transform: translateX(42%) scale(.8);
+    }
+}
+
+@media screen and (max-width: 680px) {
+    #carouselMain .carousel_slides .carousel_item {
+        max-width: 450px;
+    }
+
+    #carouselMain .carousel_slides {
+        height: 260px;
+    }
+
+    #carouselMain .carousel_item.item-0 {
+        transform: translateX(0%) scale(.8);
+    }
+
+    #carouselMain .carousel_item.item-1 {
+        transform: translateX(0%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-2 {
+        transform: translateX(20%) scale(1);
+    }
+
+    #carouselMain .carousel_item.item-3 {
+        transform: translateX(40%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-4 {
+        transform: translateX(40%) scale(.8);
+    }
+
+    #carouselMain .carousel_slides::before {
+        display: none;
+    }
+
+    #carouselMain .carousel_slides::after {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 540px) {
     #carouselMain .carousel_slides {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 400px;
         position: relative;
+        overflow: hidden;
         justify-content: center;
+        height: 280px;
     }
 
     #carouselMain .carouselmain_row {
@@ -165,12 +311,6 @@
     #carouselMain .carouselmain_row .carousel_container {
         width: 100%;
         height: auto;
-    }
-
-    #carouselMain .carousel_slides {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
     }
 
     #carouselMain .carousel_slides .carousel_item {
@@ -224,5 +364,23 @@
 
     #carouselMain .carousel_slides::after {
         display: none;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #carouselMain .carousel_slides {
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #carouselMain .carousel_slides {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    #carouselMain .carousel_slides {
+        height: 130px;
     }
 }

@@ -123,7 +123,7 @@ section#videosNews {
     max-width: 1920px;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1000px) {
     #videosNews .carousel_container .carousel_next {
         display: none;
     }

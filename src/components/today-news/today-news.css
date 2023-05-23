@@ -163,6 +163,24 @@
     background: var(--bg-green-400);
 }
 
+@media screen and (max-width: 1000px) {
+    #carouselArrows .carousel_container .carousel_prev {
+        display: none;
+    }
+
+    #carouselArrows .carousel_container .carousel_next {
+        display: none;
+    }
+
+    .carousel-row {
+        width: var(--mw-100);
+    }
+
+    .carousel_title .title {
+        padding: 0 10px;
+    }
+}
+
 @media screen and (max-width: 540px) {
     .carousel_title .title {
         padding: 0 20px;
