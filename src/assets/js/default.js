@@ -1000,7 +1000,7 @@ stories.forEach((storie) => {
 });
 
 const popUp = document.querySelector('#toPlataformPopUp');
-
+// show popup
 function openPopUp() {
   popUp.classList.add("hidden");
 
@@ -1026,7 +1026,9 @@ function openPopUp() {
     </div>
   `;
 
-  const closeButton = document.querySelector('.close');
+  const closeArea = document.querySelector('.close');
+  const closeButton = document.querySelector('.close_button');
+  // close popup
   const handleClose = () => {
     popUp.classList.remove("active");
 
@@ -1035,5 +1037,33 @@ function openPopUp() {
     }, 200);
   }
   closeButton.addEventListener('click', handleClose)
+  closeArea.addEventListener('click', handleClose)
+}
 
+function videoPopUp(name) {
+  popUp.classList.add("hidden");
+
+  setTimeout(() => {
+    popUp.classList.add("active");
+  }, 200);
+
+  popUp.innerHTML = `
+    <div class="close"></div>
+    <div class="video_container">
+    <video controls autoplay>
+      <source src="https://preprod.canalmarkket.com.br/olhar-digital-play/src/assets/videos/${name}.mp4" type="video/mp4">
+      Seu Browser não suporta esse formato de vídeo.
+    </video>
+    </div>
+  `;
+
+  const closeArea = document.querySelector('.close');
+  const handleClose = () => {
+    popUp.classList.remove("active");
+
+    setTimeout(() => {
+      popUp.classList.remove("hidden");
+    }, 200);
+  }
+  closeArea.addEventListener('click', handleClose)
 }

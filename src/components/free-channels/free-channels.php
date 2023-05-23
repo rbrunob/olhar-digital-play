@@ -11,7 +11,7 @@
             <div class="carousel_content">
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp('video_01')">
                         <img src="./src/assets/images/cartaz_canais_box_familia.webp" alt="Box Família" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp('video_02')">
                         <img src="./src/assets/images/cartaz_canais_box_cinema.webp" alt="Box Cinema" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp()">
                         <img src="./src/assets/images/cartaz_canais_box_music_shows.webp" alt="Music Box Shows" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp()">
                         <img src="./src/assets/images/cartaz_canais_box_music_shows.webp" alt="Music Box Shows" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp()">
                         <img src="./src/assets/images/cartaz_canais_box_music_shows.webp" alt="Music Box Shows" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="carousel_item">
-                    <div class="item_image">
+                    <div class="item_image" onclick="videoPopUp()">
                         <img src="./src/assets/images/cartaz_canais_box_music_shows.webp" alt="Music Box Shows" />
                         <div class="hover_play">
                             <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
