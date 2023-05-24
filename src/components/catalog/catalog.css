@@ -179,6 +179,12 @@
     width: 10%;
 }
 
+@media screen and (max-width: 1366px) {
+    #catalog .catalog_row {
+        width: var(--mw-70);
+    }
+}
+
 @media screen and (max-width: 1280px) {
     #catalog .catalog_row {
         width: var(--mw-80);

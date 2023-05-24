@@ -166,10 +166,32 @@
     box-shadow: 0 0 10px var(--bg-green-100);
 }
 
+@media screen and (max-width: 1366px) {
+    #carouselMain .carousel_item.item-0 {
+        transform: translateX(0%) scale(.8);
+    }
+
+    #carouselMain .carousel_item.item-1 {
+        transform: translateX(10%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-2 {
+        transform: translateX(25%) scale(1);
+    }
+
+    #carouselMain .carousel_item.item-3 {
+        transform: translateX(40%) scale(.9);
+    }
+
+    #carouselMain .carousel_item.item-4 {
+        transform: translateX(50%) scale(.8);
+    }
+}
+
 @media screen and (max-width: 1280px) {
     #carouselMain .carousel_slides .carousel_item {
-        max-width: 720px;
-    }
+    max-width: 720px;
+}
 
     #carouselMain .carousel_item.item-0 {
         transform: translateX(0%) scale(.8);

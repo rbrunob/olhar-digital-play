@@ -147,6 +147,12 @@
     color: var(--text-gray-500);
 }
 
+@media screen and (max-width: 1366px) {
+    .highlights_row {
+        width: var(--mw-70);
+    }
+}
+
 @media screen and (max-width: 1280px) {
     .highlights_row {
         width: var(--mw-90);
@@ -155,7 +161,6 @@
 
 @media screen and (max-width: 1000px) {
     .highlights_row {
-        width: var(--mw-90);
         padding: 10% 0;
     }
 

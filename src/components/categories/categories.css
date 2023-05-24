@@ -86,6 +86,13 @@
     background: var(--bg-green-900);
 }
 
+@media screen and (max-width: 1366px) {
+    #categories .categories_row {
+        width: var(--mw-70);
+    }
+}
+
+
 @media screen and (max-width: 1280px) {
     #categories .categories_row {
         width: var(--mw-80);
