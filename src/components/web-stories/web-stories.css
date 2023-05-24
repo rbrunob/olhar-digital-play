@@ -512,6 +512,12 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 1280px) {
+    #stories .stories_row {
+        width: var(--mw-80);
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #stories .stories_row {
         width: var(--mw-100);

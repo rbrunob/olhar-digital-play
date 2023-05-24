@@ -163,6 +163,12 @@
     background: var(--bg-green-400);
 }
 
+@media screen and (max-width: 1280px) {
+    .carousel-row {
+        width: var(--mw-80);
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #carouselArrows .carousel_container .carousel_prev {
         display: none;

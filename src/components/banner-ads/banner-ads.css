@@ -28,6 +28,12 @@
     margin: 0 auto;
 }
 
+@media screen and (max-width: 1280px) {
+    .bannerads_row {
+        width: var(--mw-80);
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .bannerads_row {
         width: var(--mw-100);

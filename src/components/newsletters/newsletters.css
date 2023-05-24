@@ -91,6 +91,12 @@
     border: none;
 }
 
+@media screen and (max-width: 1280px) {
+    #newslatters .newslatters_row {
+        width: var(--mw-80);
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #newslatters {
         display: none;
