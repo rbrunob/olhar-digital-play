@@ -678,7 +678,7 @@ stories.forEach((storie) => {
     }, 200);
 
     // set slide contents for each text, image and dots
-    // increment one after the other 
+    // increment one more 
     let formatDotsSlides = '';
 
     for (i = 0; i < storieContents.images.length; i++) {
